@@ -48,7 +48,7 @@ const RegisterPage = ()=>{
             id="Mot_de_passe"
             name="Mot_de_passe"
             // value={e.target.value}
-            type="text"
+            type="password"
             // onChange={}
             />
             <p>Vous acceptez les conditions d'utilisation, la Politique de confidentialité et la Politique relative aux cookies de Synapse.</p>
