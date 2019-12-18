@@ -10,9 +10,9 @@ import ProfilPage from './4_profilePage/ProfilPage';
 const Router =()=>{
     return(
         <div>
-                <Switch>
-                    <Route exact path='/landingPage' component={LandingPage}/>
+                <Switch>                    
                     <Route exact path='/' component={RegisterPage}/>
+                    <Route exact path='/landingPage' component={LandingPage}/>
                     <Route exact path='/editProfil' component={EditProfil}/>
                     <Route exact path='/profilPage' component={ProfilPage}/>
                 </Switch>
