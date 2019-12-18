@@ -5,7 +5,23 @@ import { Link } from 'react-router-dom';
 
 const RegisterPage = ()=>{
 
+const [createUser, setcreateUser] = useState({
+    firstname:'',
+    lastname:'',
+    email:'',
+    password:'',
+    birthday:''
 
+
+
+
+})
+    const createUser = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:5000/users', createUser)
+            .catch((err) => console.log(err))
+        
+    }
     return(
         <div>
             <h1>SYNAPSE</h1>
