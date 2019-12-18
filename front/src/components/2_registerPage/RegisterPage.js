@@ -54,7 +54,7 @@ const RegisterPage = ()=>{
             />
             <p>Vous acceptez les conditions d'utilisation, la Politique de confidentialité et la Politique relative aux cookies de Synapse.</p>
 
-            <button><Link to='/profilPage'>Accepter et s'inscrire</Link></button>
+            <button><Link to='/profilePage'>Accepter et s'inscrire</Link></button>
             <p>OU</p>
             <button>Continuer avec Facebook</button>
             <p>Déja inscrit ? <Link to='/landingPage'>S'identifier</Link></p>

@@ -29,7 +29,7 @@ const LandingPage = ()=>{
             // onChange={}
             />
             <p onClick={()=>setAfficherMdp('text')}>afficher le mot de passe</p>
-            <button><Link to='/profilPage'>S'identifier</Link></button>
+            <button><Link to='/profilePage'>S'identifier</Link></button>
                          {/* MDP oublié pas dans la demande client */}
             <button>Mot de passe oublié ?</button>
             <p>Nouveau sur Synapse ? <Link to='/'>S'inscrire</Link></p>
