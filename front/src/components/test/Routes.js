@@ -60,7 +60,7 @@ const Routes = () => {
 
     useEffect(() => {
         fetchDataUser()
-    }, [{ ...idUser }])
+    }, [idUser])
     //fetch de la data du user 
     const fetchDataUser = () => {
         axios.get(`http://localhost:5000/users/1`)
@@ -70,14 +70,13 @@ const Routes = () => {
     // update de la data du user
     const updateDataUser = (e) => {
         e.preventDefault()
-        console.log(updateUser)
         axios.put(`http://localhost:5000/users/1`, updateUser)
             .then(res => setUpdateUser(res.data))
             .catch((err) => console.log(err))
     }
     useEffect(() => {
         fetchDataHistory()
-    }, [])
+    }, [history])
     //fetch de la data des history
     const fetchDataHistory = () => {
         axios.get(`http://localhost:5000/history`)
@@ -101,7 +100,7 @@ const Routes = () => {
 
     useEffect(() => {
         fetchDataPalmares()
-    }, [])
+    }, [palmares])
     //fetch de la data des palmares
     const fetchDataPalmares = () => {
         axios.get(`http://localhost:5000/palmares`)
@@ -127,7 +126,7 @@ const Routes = () => {
 
     useEffect(() => {
         fetchDataDistinction()
-    }, [])
+    }, [distinction])
     //fetch de la data des distinctions
     const fetchDataDistinction = () => {
         axios.get(`http://localhost:5000/distinctions`)
@@ -139,13 +138,13 @@ const Routes = () => {
         e.preventDefault()
         axios.post('http://localhost:5000/distinction', createDistinction)
             .catch((err) => console.log(err))
+
     }
 
     //delete de distinction
      const fetchDeleteDistinction = (id) => {
         axios.delete(`http://localhost:5000/distinction/${id}`)
         .catch((err) => console.log(err))
-        window.location.reload(false);
 
      }
 
@@ -165,13 +164,13 @@ const Routes = () => {
         axios.post('http://localhost:5000/clients', createClient)
             .catch((err) => console.log(err))
 
+
     }
 
     //delete de clients
      const fetchDeleteClient = (id) => {
         axios.delete(`http://localhost:5000/clients/${id}`)
         .catch((err) => console.log(err))
-        window.location.reload(false);
 
 
      }
@@ -204,7 +203,7 @@ const Routes = () => {
                 <input id="email" name="email" value={updateUser.email} type="text"
                     onChange={(e) => { setUpdateUser({ ...updateUser.email, email: e.target.value }) }} />
                 <p>password</p>
-                <input id="password" name="password" value={updateUser.password} type="text"
+                <input id="password" name="password" value={updateUser.password} type="password"
                     onChange={(e) => { setUpdateUser({ ...updateUser.password, password: e.target.value }) }} />
                 <p>birthday</p>
                 <input id="birthday" name="birthday" value={updateUser.birthday} type="date"
@@ -281,12 +280,12 @@ const Routes = () => {
             </form>
 
             <h1>Distinction personnelle</h1>
-            {distinction.filter(distinction => distinction.UserId === idUser.id).map(distinction =>
+            {distinction.filter(distinction => distinction.UserId === idUser.id).map(x =>
                 <div>
-                    <p>{distinction.name}</p>
-                    <p>{distinction.description}</p>
-                    <p>{distinction.UserId}</p>
-                    <button onClick={()=>fetchDeleteDistinction(distinction.id)} >delete</button>
+                    <p>{x.name}</p>
+                    <p>{x.date}</p>
+                    <p>{x.UserId}</p>
+                    <button onClick={()=>fetchDeleteDistinction(x.id)} >delete</button>
 
                 </div>
 
@@ -296,9 +295,9 @@ const Routes = () => {
                 <p>name</p>
                 <input id="name" name="name" value={createDistinction.name} required type="text"
                     onChange={(e) => { setcreateDistinction({ ...createDistinction, name: e.target.value }) }} />
-                <p>description</p>
-                <input id="description" name="description" value={createDistinction.description} required type="text"
-                    onChange={(e) => { setcreateDistinction({ ...createDistinction, description: e.target.value }) }} />
+                <p>date</p>
+                <input id="date" name="date" value={createDistinction.date} required type="date"
+                    onChange={(e) => { setcreateDistinction({ ...createDistinction, date: e.target.value }) }} />
 
                 <button type="submit" onClick={(e) => { setcreateDistinction({ ...createDistinction, UserId: idUser.id }) }}>submit</button>
             </form>
