@@ -42,14 +42,14 @@ const [palmares, setpalmares] = useState([])
     }, [])
 //fetch de la data du user 
     const fetchDataUser = ()=>{
-        axios.get(`http://localhost:5000/users/1`)
+        axios.get(`http://localhost:5000/users/2`)
         .then(res => setIdUser(res.data))
         .catch((err) => console.log(err))
     }
 // update de la data du user
      const updateDataUser = (e) => {
          e.preventDefault()
-         axios.put(`http://localhost:5000/users/1`, updateUser)
+         axios.put(`http://localhost:5000/users/2`, updateUser)
             .then(res => setUpdateUser(res.data))
             .catch((err) => console.log(err))
      }
