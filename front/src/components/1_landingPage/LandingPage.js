@@ -29,7 +29,7 @@ const LandingPage = ()=>{
             />
             <Link  to='/profilePage'><button className='LandingPage-button'>s'inscrire</button></Link>
             <div className="register-already-subscribe">
-                <button className="button-fb">Continuer avec Facebook</button>
+                <button className="LandingPage-buttonfb">Continuer avec Facebook</button>
                 <p className="text-inscription">Nouveau sur Synapse ? <Link to ='/register'><span className='LandingPage-span'>S'identifer</span></Link></p>
             </div>
         </div>

@@ -57,14 +57,14 @@ span.LandingPage-span {
     color: #4B905E;
 }
 
-button.button-fb{
+button.LandingPage-buttonfb{
     width: 40%;
     color: white;
     background-color:#3C579C;
     width: 40%;
     margin: 10px 200px;
     border-radius: 3rem;
-    padding-left: 1rem;
+    padding: 1rem 0px;
     border: #3C579C 1px solid;
     color: white;
 }
