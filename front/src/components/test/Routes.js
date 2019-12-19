@@ -79,6 +79,15 @@ const Routes = () => {
         axios.post('http://localhost:5000/history', createHistory)
             .catch((err) => console.log(err))
     }
+    //delete de history
+     const fetchDeleteHistory = (id) => {
+        axios.delete(`http://localhost:5000/history/${id}`)
+        .catch((err) => console.log(err))
+        window.location.reload(false);
+
+     }
+
+
     useEffect(() => {
         fetchDataPalmares()
     }, [])
@@ -94,6 +103,17 @@ const Routes = () => {
         axios.post('http://localhost:5000/palmares', createPalmares)
             .catch((err) => console.log(err))
     }
+    //delete de palmares
+    const fetchDeletePalmares = (id) => {
+        axios.delete(`http://localhost:5000/palmares/${id}`)
+            .catch((err) => console.log(err))
+            window.location.reload(false);
+
+    }
+
+
+
+
     useEffect(() => {
         fetchDataDistinction()
     }, [])
@@ -109,6 +129,14 @@ const Routes = () => {
         axios.post('http://localhost:5000/distinction', createDistinction)
             .catch((err) => console.log(err))
     }
+
+    //delete de distinction
+     const fetchDeleteDistinction = (id) => {
+        axios.delete(`http://localhost:5000/distinction/${id}`)
+        .catch((err) => console.log(err))
+        window.location.reload(false);
+
+     }
     return (
         <div>
             <NavBar />
@@ -175,6 +203,7 @@ const Routes = () => {
             <h1>Parcours sportif</h1>
             {history.filter(history => history.UserId === idUser.id).map(history =>
                 <div>
+                    <button onClick={()=>fetchDeleteHistory(history.id)} >delete</button>
                     <p>{history.name}</p>
                     <p>{history.description}</p>
                     <p>{history.UserId}</p>
@@ -198,6 +227,8 @@ const Routes = () => {
                     <p>{x.name}</p>
                     <p>{x.description}</p>
                     <p>{x.UserId}</p>
+                    <button onClick={()=>fetchDeletePalmares(x.id)} >delete</button>
+
                 </div>
 
             )}
@@ -219,6 +250,8 @@ const Routes = () => {
                     <p>{distinction.name}</p>
                     <p>{distinction.description}</p>
                     <p>{distinction.UserId}</p>
+                    <button onClick={()=>fetchDeleteDistinction(distinction.id)} >delete</button>
+
                 </div>
 
             )}
