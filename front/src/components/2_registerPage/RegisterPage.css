@@ -9,7 +9,7 @@
 }
 .register-logo {
     width: auto;
-    height: 50%;
+    height: 70%;
     
 }
 .container-register{
@@ -20,30 +20,28 @@
     color: grey;
 }
 .register-h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     margin: 20px auto;
     color: white;
 }
 .register-h2{
-    font-size: 3rem;
+    font-size: 2rem;
     color: white;
     text-align: center;
 }
 .form-register {
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: #E1E1E1;
-    margin: auto 55px;
-
+    margin: 10px 50px;
+    border-radius: 1rem;
 }
+
 .register-login {
     background-color: #4B905E;
     display: flex;
     flex-direction: column;
     width: 50%;
     float: right;
-}
-.prenom-register {
-    padding-right: 2px;
 }
 
 .p-register{
@@ -80,6 +78,7 @@
 .bottom-register a{
     display: flex;
     justify-content: center;
+    color: #4B905E;
 }
 
 .form-row{
