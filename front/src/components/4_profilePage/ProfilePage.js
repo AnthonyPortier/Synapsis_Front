@@ -57,7 +57,7 @@ const [distinction, setDistinction] = useState([])
 
     useEffect(() => {
         fetchDataUser()
-    }, [])
+    }, [{...idUser}])
 //fetch de la data du user 
     const fetchDataUser = ()=>{
         axios.get(`http://localhost:5000/users/1`)
@@ -67,6 +67,7 @@ const [distinction, setDistinction] = useState([])
 // update de la data du user
     const updateDataUser = (e) => {
         e.preventDefault()
+        console.log(updateUser)
         axios.put(`http://localhost:5000/users/1`, updateUser)
             .then(res => setUpdateUser(res.data))
             .catch((err) => console.log(err))
@@ -146,60 +147,67 @@ const [distinction, setDistinction] = useState([])
     <p>{idUser.weight}</p>
     <p>{idUser.profil_pic}</p>
     <p>{idUser.role}</p>
+    <p>{idUser.hobbies}</p>
 
 
     <h1>autres champs du user à modifier ou à rentrer</h1>
-
     <form onSubmit={updateDataUser}>
+  
         <p>firstname</p>
-         <input id="firstname" name="firstname" value={updateUser.firstname} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, firstname: e.target.value }) }} />
+         <input id="firstname" name="firstname" value={updateUser.firstname}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.firstname, firstname: e.target.value }) }} />
 
         <p>lastname</p>
-         <input id="lastname" name="lastname" value={updateUser.lastname} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, lastname: e.target.value }) }} />
+         <input id="lastname" name="lastname" value={updateUser.lastname}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.lastname, lastname: e.target.value }) }} />
 
         <p>email</p>
-         <input id="email" name="email" value={updateUser.email} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, email: e.target.value }) }} />
+         <input id="email" name="email" value={updateUser.email}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.email, email: e.target.value }) }} />
 
         <p>password</p>
-         <input id="password" name="password" value={updateUser.password} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, password: e.target.value }) }} />
+         <input id="password" name="password" value={updateUser.password}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.password, password: e.target.value }) }} />
 
         <p>birthday</p>
-         <input id="birthday" name="birthday" value={updateUser.birthday} required type="date"
-        onChange={(e) => { setUpdateUser({ ...updateUser, birthday: e.target.value }) }} />
+         <input id="birthday" name="birthday" value={updateUser.birthday}  type="date"
+        onChange={(e) => { setUpdateUser({ ...updateUser.birthday, birthday: e.target.value }) }} />
         
         <p>birthday place</p>
-         <input id="birthday_place" name="birthday_place" value={updateUser.birthday_place} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, birthday_place: e.target.value }) }} />
+         <input id="birthday_place" name="birthday_place" value={updateUser.birthday_place}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.birthday_place, birthday_place: e.target.value }) }} />
 
         <p>actual_club</p>
-         <input id="actual_club" name="actual_club" value={updateUser.actual_club} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, actual_club: e.target.value }) }} />
+         <input id="actual_club" name="actual_club" value={updateUser.actual_club}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.actual_club, actual_club: e.target.value }) }} />
 
         <p>categorie</p>
-         <input id="categorie" name="categorie" value={updateUser.categorie} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, categorie: e.target.value }) }} />
+         <input id="categorie" name="categorie" value={updateUser.categorie}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.categorie, categorie: e.target.value }) }} />
         
         <p>size</p>
-         <input id="size" name="size" value={updateUser.size} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, size: e.target.value }) }} />
+         <input id="size" name="size" value={updateUser.size}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.size, size: e.target.value }) }} />
 
         <p>weight</p>
-         <input id="weight" name="weight" value={updateUser.weight} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, weight: e.target.value }) }} />
+         <input id="weight" name="weight" value={updateUser.weight}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.weight, weight: e.target.value }) }} />
 
         <p>profil_pic</p>
-         <input id="profil_pic" name="profil_pic" value={updateUser.profil_pic} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, profil_pic: e.target.value }) }} />
+         <input id="profil_pic" name="profil_pic" value={updateUser.profil_pic}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.profil_pic, profil_pic: e.target.value }) }} />
 
         <p>role</p>
-         <input id="role" name="role" value={updateUser.role} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, role: e.target.value }) }} />
-        <button type="submit">submit</button>
-    </form>
+         <input id="role" name="role" value={updateUser.role}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.role, role: e.target.value }) }} />
+
+        <h1>Hobbies</h1>
+        <input id="hobbies" name="hobbies" value={updateUser.hobbies}  type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser.hobbies, hobbies: e.target.value }) }} />
+
+        <button type='submit'>submit</button>  
+            </form>
+
 
         {/* history place */}
         <h1>Parcours sportif</h1>
@@ -284,13 +292,7 @@ const [distinction, setDistinction] = useState([])
     </form>
     
 
-            <h1>Hobbies</h1>
-            <p>{idUser.hobbies}</p>
-            <form onSubmit={updateDataUser}>
-                <input id="hobbies" name="hobbies" value={updateUser.hobbies} required type="text"
-                onChange={(e) => { setUpdateUser({ ...updateUser, hobbies: e.target.value }) }} />
-                <button type='submit'>submit</button>
-            </form>
+            
      
 
 
