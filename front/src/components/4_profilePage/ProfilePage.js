@@ -6,9 +6,11 @@ import React, {
 import NavBar from '../6_navBar/NavBar'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import './ProfilePage.css'
 
 
-const ProfilePage = ()=>{
+
+const ProfilePage = () => {
 
  const [idUser,setIdUser]=useState([])
 
@@ -56,7 +58,7 @@ const [palmares, setpalmares] = useState([])
     }, [])
 
      const fetchDataPalmares = ()=>{
-        axios.get(`http://localhost:5000/palmares/2`)
+        axios.get(`http://localhost:5000/palmares/5`)
         .then(res => setpalmares(res.data))
         .catch((err) => console.log(err))
     }
@@ -118,11 +120,39 @@ const [palmares, setpalmares] = useState([])
         <p>description</p>
          <input id="description" name="description" value={createPalmares.description} required type="text"
         onChange={(e) => { setcreatePalmares({ ...createPalmares, description: e.target.value }) }} />
+
+         <p>UserId</p>
+         <input id="UserId" name="UserId" value={createPalmares.UserId} required type="text"
+        onChange={(e) => { setcreatePalmares({ ...createPalmares, UserId: e.target.value }) }} />
         <button type="submit">submit</button>
     </form>
 
+    
+
+        {/* <div className="profile-page">
+
+            <NavBar />
+
+            <div className="profile-div-80">
+
+                <div className="profile-first-container">
+                    <div className="baneer-profile">
+                        <img className="baneer-img" src="https://previews.123rf.com/images/stockdeca/stockdeca1708/stockdeca170800021/85308521-ballon-de-football-sur-l-herbe-verte-banni%C3%A8re-illustration-de-rendu-3d.jpg"/>
+                    </div>
+                    <div className="div-info-head-profile">
+                        <p>Rida LAMRINI</p>
+                        <p>Joueur</p>
+                        <p>Montpellier Herault Sport Club</p>
+                    </div>
+                    <div className="div-numberRelation-profile">
+                        <p>500 Relations</p>
+                    </div>
 
 
+                </div>
+
+            </div>
+        </div> */}
         </div>
     )
 }

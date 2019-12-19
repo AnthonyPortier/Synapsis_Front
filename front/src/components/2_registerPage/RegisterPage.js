@@ -22,7 +22,7 @@ console.log(createUser)
         e.preventDefault()
         axios.post('http://localhost:5000/users', createUser)
             .catch((err) => console.log(err))
-            .then(e => history.push('/profilePage'))
+            .then(e => history.push('/profile'))
 
         
     }
@@ -88,7 +88,7 @@ console.log(createUser)
  <button type='submit'>Accepter et s'inscrire</button>
 <p>OU</p>
 <button>Continuer avec Facebook</button>
-<p>Déja inscrit ? <Link to='/landingPage'>S'identifier</Link></p>
+<p>Déja inscrit ? <Link to='/login'>S'identifier</Link></p>
 
       </Row>
       
