@@ -11,8 +11,8 @@ const Router =()=>{
     return(
         <div>
                 <Switch>                    
-                    <Route exact path='/' component={RegisterPage}/>
-                    <Route exact path='/landingPage' component={LandingPage}/>
+                    <Route exact path='/' component={LandingPage}/>
+                    <Route exact path='/register' component={RegisterPage}/>
                     <Route exact path='/editProfile' component={EditProfile}/>
                     <Route exact path='/profilePage' component={ProfilePage}/>
                 </Switch>
