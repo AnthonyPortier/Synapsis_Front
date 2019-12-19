@@ -8,9 +8,8 @@ import Routes from './test/Routes'
 
 
 const Router = () => {
-    return (
+    return (A
         <div>
-<<<<<<< HEAD
             <Switch>
                 <Route exact path='/' component={RegisterPage} />
                 <Route exact path='/login' component={LandingPage} />
@@ -19,14 +18,6 @@ const Router = () => {
                 {/* Route pour tester les routes */}
                 <Route exact path='/routes/:id' component={Routes} /> 
             </Switch>
-=======
-                <Switch>                    
-                    <Route exact path='/' component={LandingPage}/>
-                    <Route exact path='/register' component={RegisterPage}/>
-                    <Route exact path='/editProfile' component={EditProfile}/>
-                    <Route exact path='/profilePage' component={ProfilePage}/>
-                </Switch>
->>>>>>> origin/registerpage
         </div>
     )
 }

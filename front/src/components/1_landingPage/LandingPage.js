@@ -27,20 +27,11 @@ const LandingPage = ()=>{
             type={afficherMdp}
             // onChange={}
             />
-<<<<<<< HEAD
-            <p onClick={()=>setAfficherMdp('text')}>afficher le mot de passe</p>
-            <button><Link to='/profilePage'>S'identifier</Link></button>
-                         {/* MDP oublié pas dans la demande client */}
-            <button>Mot de passe oublié ?</button>
-            <p>Nouveau sur Synapse ? <Link to='/'>S'inscrire</Link></p>
-
-=======
             <Link  to='/profilePage'><button className='LandingPage-button'>s'inscrire</button></Link>
             <div className="register-already-subscribe">
                 <button className="LandingPage-buttonfb">Continuer avec Facebook</button>
                 <p className="text-inscription">Nouveau sur Synapse ? <Link to ='/register'><span className='LandingPage-span'>S'identifer</span></Link></p>
             </div>
->>>>>>> origin/registerpage
         </div>
     )
 }
