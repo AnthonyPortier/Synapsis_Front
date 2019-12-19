@@ -68,13 +68,14 @@ const Routes = () => {
             .then(res => setIdUser(res.data))
             .catch((err) => console.log(err))
     }
-    console.log(idUser)
     // update de la data du user
     const updateDataUser = (e) => {
         e.preventDefault()
         axios.put(`http://localhost:5000/users/1`, idUser)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
+            window.location.reload(false);
+
     }
     useEffect(() => {
         fetchDataHistory()
@@ -90,6 +91,8 @@ const Routes = () => {
         e.preventDefault()
         axios.post('http://localhost:5000/history', createHistory)
             .catch((err) => console.log(err))
+            window.location.reload(false);
+
     }
     //delete de history
      const fetchDeleteHistory = (id) => {
@@ -114,6 +117,8 @@ const Routes = () => {
         e.preventDefault()
         axios.post('http://localhost:5000/palmares', createPalmares)
             .catch((err) => console.log(err))
+            window.location.reload(false);
+
     }
     //delete de palmares
     const fetchDeletePalmares = (id) => {
