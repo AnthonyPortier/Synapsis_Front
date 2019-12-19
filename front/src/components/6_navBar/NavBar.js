@@ -33,6 +33,9 @@ const NavBar = (props)=>{
               <NavLink href="/ProfilePage">Acceuil</NavLink>
             </NavItem>
             <NavItem>
+              <NavLink href="/modal">Modal</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink href="/ProfilePage">Réseau</NavLink>
             </NavItem>
             <NavItem>
