@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import NavBar from '../6_navBar/NavBar'
 
 
-const ProfilPage = ()=>{
+const ProfilePage = ()=>{
 
 
     return(
@@ -14,4 +14,4 @@ const ProfilPage = ()=>{
     )
 }
 
-export default ProfilPage;
+export default ProfilePage;
