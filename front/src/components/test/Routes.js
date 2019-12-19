@@ -47,6 +47,17 @@ const Routes = () => {
         date: '',
         UserId: 0
     })
+
+     //hooks pour get et update une client
+     const [client, setClient] = useState([])
+     const [createClient, setcreateClient] = useState({
+        firstname: '',
+        lastname: '',
+        profil_pic:'',
+        club:'',
+        UserId: 0
+     })
+
     useEffect(() => {
         fetchDataUser()
     }, [{ ...idUser }])
@@ -137,6 +148,33 @@ const Routes = () => {
         window.location.reload(false);
 
      }
+
+
+       useEffect(() => {
+        fetchDataClient()
+    }, [client])
+    //fetch de la data des clients
+    const fetchDataClient = () => {
+        axios.get(`http://localhost:5000/clients`)
+            .then(res => setClient(res.data))
+            .catch((err) => console.log(err))
+    }
+    //post de clients
+    const createDataClient = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:5000/clients', createClient)
+            .catch((err) => console.log(err))
+
+    }
+
+    //delete de clients
+     const fetchDeleteClient = (id) => {
+        axios.delete(`http://localhost:5000/clients/${id}`)
+        .catch((err) => console.log(err))
+        window.location.reload(false);
+
+
+     }
     return (
         <div>
             <NavBar />
@@ -208,7 +246,6 @@ const Routes = () => {
                     <p>{history.description}</p>
                     <p>{history.UserId}</p>
                 </div>
-
             )}
 
             <form onSubmit={createDataHistory}>
@@ -228,7 +265,6 @@ const Routes = () => {
                     <p>{x.description}</p>
                     <p>{x.UserId}</p>
                     <button onClick={()=>fetchDeletePalmares(x.id)} >delete</button>
-
                 </div>
 
             )}
@@ -265,6 +301,38 @@ const Routes = () => {
                     onChange={(e) => { setcreateDistinction({ ...createDistinction, description: e.target.value }) }} />
 
                 <button type="submit" onClick={(e) => { setcreateDistinction({ ...createDistinction, UserId: idUser.id }) }}>submit</button>
+            </form>
+
+{/* form des clients de l'agent */}
+            
+            <h1>Client</h1>
+            {client.filter(client => client.UserId === idUser.id).map(x =>
+                <div>
+                    <p>{x.firstname}</p>
+                    <p>{x.lastname}</p>
+                    <p>{x.club}</p>
+                    <p>{x.profil_pic}</p>
+                    <button onClick={()=>fetchDeleteClient(x.id)} >delete</button>
+
+                </div>
+
+            )}
+            <form onSubmit={createDataClient}>
+                <p>Firstname</p>
+                <input id="firstname" name="firstname" value={createClient.firstname} required type="text"
+                    onChange={(e) => { setcreateClient({ ...createClient, firstname: e.target.value }) }} />
+                <p>Lastname</p>
+                <input id="lastname" name="lastname" value={createClient.lastname} required type="text"
+                    onChange={(e) => { setcreateClient({ ...createClient, lastname: e.target.value }) }} />
+
+                 <p>Profil_pic</p>
+                <input id="profil_pic" name="profil_pic" value={createClient.profil_pic} required type="text"
+                    onChange={(e) => { setcreateClient({...createClient, profil_pic: e.target.value }) }} />
+
+                <p>Club</p>
+                <input id="club" name="club" value={createClient.club} required type="text"
+                    onChange={(e) => { setcreateClient({ ...createClient, club: e.target.value }) }} />
+                <button type="submit" onClick={(e) => { setcreateClient({ ...createClient, UserId: idUser.id }) }}>submit</button>
             </form>
 
 
