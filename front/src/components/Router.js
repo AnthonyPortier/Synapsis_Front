@@ -14,7 +14,7 @@ const Router =()=>{
                     <Route exact path='/' component={RegisterPage}/>
                     <Route exact path='/landingPage' component={LandingPage}/>
                     <Route exact path='/editProfile' component={EditProfile}/>
-                    <Route exact path='/profilePage' component={ProfilePage}/>
+                    <Route exact path='/profilePage/:id' component={ProfilePage}/>
                 </Switch>
         </div>
     )
