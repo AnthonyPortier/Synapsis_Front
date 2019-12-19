@@ -65,12 +65,14 @@
     color: white;
     width: 90%;
     margin: auto;
+    height: 4rem;
 }
 .button-signin {
     width: 90%;
     border-radius: 20px;
     background-color: #4B905E;
     color: white;
+    height: 4rem;
 }
 .bottom-register a{
     display: flex;
