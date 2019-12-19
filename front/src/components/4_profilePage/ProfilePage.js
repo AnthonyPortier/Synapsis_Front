@@ -29,6 +29,16 @@ const ProfilePage = () => {
     role:''
  })
 
+//hooks pour get create et delete history
+const [history, sethistory] = useState([])
+const [createHistory, setcreateHistory] = useState({
+    name:'',
+    poste:'',
+    date:'',
+    description:''
+})
+
+
  //hooks pour get et update un palmares
 const [palmares, setpalmares] = useState([])
  const [createPalmares, setcreatePalmares] = useState({
@@ -37,22 +47,55 @@ const [palmares, setpalmares] = useState([])
     UserId:0
  })
 
+ //hooks pour get et update une distinction
+const [distinction, setDistinction] = useState([])
+ const [createDistinction, setcreateDistinction] = useState({
+    name:'',
+    date:'',
+    UserId:0
+ })
+
     useEffect(() => {
         fetchDataUser()
     }, [])
 //fetch de la data du user 
     const fetchDataUser = ()=>{
-        axios.get(`http://localhost:5000/users/2`)
+        axios.get(`http://localhost:5000/users/1`)
         .then(res => setIdUser(res.data))
         .catch((err) => console.log(err))
     }
 // update de la data du user
-     const updateDataUser = (e) => {
-         e.preventDefault()
-         axios.put(`http://localhost:5000/users/2`, updateUser)
+    const updateDataUser = (e) => {
+        e.preventDefault()
+        axios.put(`http://localhost:5000/users/1`, updateUser)
             .then(res => setUpdateUser(res.data))
             .catch((err) => console.log(err))
-     }
+    }
+
+
+
+
+
+
+    useEffect(() => {
+        fetchDataHistory()
+    }, [])
+//fetch de la data des history
+     const fetchDataHistory = ()=>{
+        axios.get(`http://localhost:5000/history`)
+        .then(res => sethistory(res.data))
+        .catch((err) => console.log(err))
+    }
+
+    //post de history
+    const createDataHistory = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:5000/history', createHistory)
+            .catch((err) => console.log(err))
+    }
+
+
+
 
     useEffect(() => {
         fetchDataPalmares()
@@ -67,6 +110,22 @@ const [palmares, setpalmares] = useState([])
      const createDataPalmares = (e) => {
         e.preventDefault()
         axios.post('http://localhost:5000/palmares', createPalmares)
+            .catch((err) => console.log(err))}
+
+
+    useEffect(() => {
+        fetchDataDistinction()
+    }, [])
+//fetch de la data des distinctions
+     const fetchDataDistinction = ()=>{
+        axios.get(`http://localhost:5000/distinctions`)
+        .then(res => setDistinction(res.data))
+        .catch((err) => console.log(err))
+    }
+//post de distinction
+     const createDataDistinction = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:5000/distinction', createDistinction)
             .catch((err) => console.log(err))}
 
 
@@ -85,7 +144,6 @@ const [palmares, setpalmares] = useState([])
     <p>{idUser.categorie}</p>
     <p>{idUser.size}</p>
     <p>{idUser.weight}</p>
-    <p>{idUser.hobbies}</p>
     <p>{idUser.profil_pic}</p>
     <p>{idUser.role}</p>
 
@@ -133,10 +191,6 @@ const [palmares, setpalmares] = useState([])
          <input id="weight" name="weight" value={updateUser.weight} required type="text"
         onChange={(e) => { setUpdateUser({ ...updateUser, weight: e.target.value }) }} />
 
-        <p>hobbies</p>
-         <input id="hobbies" name="hobbies" value={updateUser.hobbies} required type="text"
-        onChange={(e) => { setUpdateUser({ ...updateUser, hobbies: e.target.value }) }} />
-
         <p>profil_pic</p>
          <input id="profil_pic" name="profil_pic" value={updateUser.profil_pic} required type="text"
         onChange={(e) => { setUpdateUser({ ...updateUser, profil_pic: e.target.value }) }} />
@@ -147,7 +201,35 @@ const [palmares, setpalmares] = useState([])
         <button type="submit">submit</button>
     </form>
 
-    <h1>Parcours sportif</h1>
+        {/* history place */}
+        <h1>Parcours sportif</h1>
+
+{history.filter(history=>history.UserId===idUser.id).map(history=>
+        <div>
+            <p>{history.name}</p>
+            <p>{history.description}</p>
+            <p>{history.UserId}</p>
+
+        </div>
+        
+        )}
+    
+
+     <form onSubmit={createDataHistory}>
+        <p>name</p>
+         <input id="name" name="name" value={createHistory.name} required type="text"
+        onChange={(e) => { setcreateHistory({ ...createHistory, name: e.target.value }) }} />
+
+        <p>description</p>
+         <input id="description" name="description" value={createHistory.description} required type="text"
+        onChange={(e) => { setcreateHistory({ ...createHistory, description: e.target.value }) }} />
+
+        
+        <button type="submit" onClick={(e) => { setcreateHistory({ ...createHistory, UserId: idUser.id }) }}>submit</button>
+    </form>
+
+
+    <h1>Palmares</h1>
     {palmares.filter(x=>x.UserId===idUser.id).map(x=>
         <div>
             <p>{x.name}</p>
@@ -173,6 +255,44 @@ const [palmares, setpalmares] = useState([])
         <button type="submit" onClick={(e) => { setcreatePalmares({ ...createPalmares, UserId: idUser.id }) }}>submit</button>
     </form>
     
+
+
+        <h1>Distinction personnelle</h1>
+        {distinction.filter(distinction=>distinction.UserId===idUser.id).map(distinction=>
+        <div>
+            <p>{distinction.name}</p>
+            <p>{distinction.description}</p>
+            <p>{distinction.UserId}</p>
+
+        </div>
+        
+        )}
+    
+
+
+     <form onSubmit={createDataDistinction}>
+        <p>name</p>
+         <input id="name" name="name" value={createDistinction.name} required type="text"
+        onChange={(e) => { setcreateDistinction({ ...createDistinction, name: e.target.value }) }} />
+
+        <p>description</p>
+         <input id="description" name="description" value={createDistinction.description} required type="text"
+        onChange={(e) => { setcreateDistinction({ ...createDistinction, description: e.target.value }) }} />
+
+        
+        <button type="submit" onClick={(e) => { setcreateDistinction({ ...createDistinction, UserId: idUser.id }) }}>submit</button>
+    </form>
+    
+
+            <h1>Hobbies</h1>
+            <p>{idUser.hobbies}</p>
+            <form onSubmit={updateDataUser}>
+                <input id="hobbies" name="hobbies" value={updateUser.hobbies} required type="text"
+                onChange={(e) => { setUpdateUser({ ...updateUser, hobbies: e.target.value }) }} />
+                <button type='submit'>submit</button>
+            </form>
+     
+
 
         {/* <div className="profile-page">
 
