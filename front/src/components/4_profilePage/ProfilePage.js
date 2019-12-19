@@ -286,8 +286,6 @@ const [distinction, setDistinction] = useState([])
         <p>description</p>
          <input id="description" name="description" value={createDistinction.description} required type="text"
         onChange={(e) => { setcreateDistinction({ ...createDistinction, description: e.target.value }) }} />
-
-        
         <button type="submit" onClick={(e) => { setcreateDistinction({ ...createDistinction, UserId: idUser.id }) }}>submit</button>
     </form>
     
