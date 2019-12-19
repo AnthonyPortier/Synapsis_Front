@@ -11,9 +11,8 @@ import './ProfilePage.css'
 
 
 const ProfilePage = () => {
-
+//hooks pour get et update un user
  const [idUser,setIdUser]=useState([])
-
  const [updateUser,setUpdateUser]=useState({
     firstname:'',
     lastname:'',
@@ -29,6 +28,8 @@ const ProfilePage = () => {
     profil_pic:'',
     role:''
  })
+
+ //hooks pour get et update un palmares
 const [palmares, setpalmares] = useState([])
  const [createPalmares, setcreatePalmares] = useState({
     name:'',
@@ -39,13 +40,13 @@ const [palmares, setpalmares] = useState([])
     useEffect(() => {
         fetchDataUser()
     }, [])
-
+//fetch de la data du user 
     const fetchDataUser = ()=>{
         axios.get(`http://localhost:5000/users/1`)
         .then(res => setIdUser(res.data))
         .catch((err) => console.log(err))
     }
-
+// update de la data du user
      const updateDataUser = (e) => {
          e.preventDefault()
          axios.put(`http://localhost:5000/users/1`, updateUser)
@@ -56,13 +57,13 @@ const [palmares, setpalmares] = useState([])
     useEffect(() => {
         fetchDataPalmares()
     }, [])
-
+//fetch de la data des palmares
      const fetchDataPalmares = ()=>{
-        axios.get(`http://localhost:5000/palmares/5`)
+        axios.get(`http://localhost:5000/palmares`)
         .then(res => setpalmares(res.data))
         .catch((err) => console.log(err))
     }
-
+//post de palmares
      const createDataPalmares = (e) => {
         e.preventDefault()
         axios.post('http://localhost:5000/palmares', createPalmares)
@@ -79,6 +80,15 @@ const [palmares, setpalmares] = useState([])
     <p>{idUser.email}</p>
     <p>{idUser.password}</p>
     <p>{idUser.birthday}</p>
+    <p>{idUser.birthday_place}</p>
+    <p>{idUser.actual_place}</p>
+    <p>{idUser.categorie}</p>
+    <p>{idUser.size}</p>
+    <p>{idUser.weight}</p>
+    <p>{idUser.hobbies}</p>
+    <p>{idUser.profil_pic}</p>
+    <p>{idUser.role}</p>
+
 
     <h1>autres champs du user à modifier ou à rentrer</h1>
 
@@ -102,14 +112,52 @@ const [palmares, setpalmares] = useState([])
         <p>birthday</p>
          <input id="birthday" name="birthday" value={updateUser.birthday} required type="date"
         onChange={(e) => { setUpdateUser({ ...updateUser, birthday: e.target.value }) }} />
+        
+        <p>birthday place</p>
+         <input id="birthday_place" name="birthday_place" value={updateUser.birthday_place} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, birthday_place: e.target.value }) }} />
+
+        <p>actual_club</p>
+         <input id="actual_club" name="actual_club" value={updateUser.actual_club} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, actual_club: e.target.value }) }} />
+
+        <p>categorie</p>
+         <input id="categorie" name="categorie" value={updateUser.categorie} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, categorie: e.target.value }) }} />
+        
+        <p>size</p>
+         <input id="size" name="size" value={updateUser.size} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, size: e.target.value }) }} />
+
+        <p>weight</p>
+         <input id="weight" name="weight" value={updateUser.weight} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, weight: e.target.value }) }} />
+
+        <p>hobbies</p>
+         <input id="hobbies" name="hobbies" value={updateUser.hobbies} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, hobbies: e.target.value }) }} />
+
+        <p>profil_pic</p>
+         <input id="profil_pic" name="profil_pic" value={updateUser.profil_pic} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, profil_pic: e.target.value }) }} />
+
+        <p>role</p>
+         <input id="role" name="role" value={updateUser.role} required type="text"
+        onChange={(e) => { setUpdateUser({ ...updateUser, role: e.target.value }) }} />
         <button type="submit">submit</button>
     </form>
 
     <h1>Parcours sportif</h1>
-    <p>{palmares.name}</p>
-    <p>{palmares.description}</p>
-    <p>{palmares.UserId}</p>
+    {palmares.filter(x=>x.UserId===idUser.id).map(x=>
+        <div>
+            <p>{x.name}</p>
+            <p>{x.description}</p>
+            <p>{x.UserId}</p>
 
+        </div>
+        
+        )}
+    
 
 
      <form onSubmit={createDataPalmares}>
@@ -121,12 +169,9 @@ const [palmares, setpalmares] = useState([])
          <input id="description" name="description" value={createPalmares.description} required type="text"
         onChange={(e) => { setcreatePalmares({ ...createPalmares, description: e.target.value }) }} />
 
-         <p>UserId</p>
-         <input id="UserId" name="UserId" value={createPalmares.UserId} required type="text"
-        onChange={(e) => { setcreatePalmares({ ...createPalmares, UserId: e.target.value }) }} />
-        <button type="submit">submit</button>
+        
+        <button type="submit" onClick={(e) => { setcreatePalmares({ ...createPalmares, UserId: idUser.id }) }}>submit</button>
     </form>
-
     
 
         {/* <div className="profile-page">
