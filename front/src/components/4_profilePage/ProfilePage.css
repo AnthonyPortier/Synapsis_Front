@@ -1,0 +1,35 @@
+.profile-page {
+    display:flex;
+    flex-direction: column;
+}
+.profile-div-80{
+    display:flex;
+    flex-direction: column;
+    width:80%;
+    align-self:center;
+
+}
+.profile-first-container{
+    display:flex;
+    flex-direction: column;
+
+}
+.baneer-profile {
+    display:flex;
+    width: 100%;
+}
+
+.baneer-img {
+    width: 100%
+}
+
+.div-info-head-profile {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.div-numberRelation-profile {
+    
+}

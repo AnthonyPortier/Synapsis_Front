@@ -1,0 +1,54 @@
+.container-logo{
+    background-color:#4B905E;
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    float: left;
+
+}
+.register-logo {
+    width: auto;
+    height: 50%;
+    
+}
+.container-register{
+    background-color: #4B905E;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+   
+}
+.register-h1 {
+    font-size: 5rem;
+    margin: 20px auto;
+    color: white;
+}
+.register-h2{
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+}
+.form-register {
+    font-size: 2rem;
+    background-color: #E1E1E1;
+    margin: auto 55px;
+
+}
+.register-login {
+    background-color: #4B905E;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    float: right;
+}
+.button-signin{
+    width: 70%;
+    border-radius: 10%;
+    background-color: #4B905E;
+    ;
+}
+.prenom-register {
+    padding-right: 2px;
+}
+
