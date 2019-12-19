@@ -12,29 +12,45 @@ const ModalClient = (props) => {
 
     const toggle = () => setModal(!modal);
 
-    
+    const [createClient, setcreateClient] = useState({
+        firstname: '',
+        lastname: '',
+        profil_pic: '',
+        club: '',
+    })
+
+    const createDataClient = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:8080/clients', createClient)
+            .catch((err) => console.log(err))
+
+    }
+
+
 
     return (
         <div>
             <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Parcours Sportif</ModalHeader>
+                <ModalHeader toggle={toggle}>Clients</ModalHeader>
                 <ModalBody>
-                    <p>Club :</p>
-                    <input id="name" name="name" value={createHistory.name} required type="text"
-                        onChange={(e) => { setcreateHistory({ ...createHistory, name: e.target.value }) }} />
-                    <p>Poste :</p>
-                    <input id="poste" name="poste" value={createHistory.poste} required type="text"
-                        onChange={(e) => { setcreateHistory({ ...createHistory, poste: e.target.value }) }} />
-                        <p>Description :</p>
-                    <input id="description" name="description" value={createHistory.description} required type="text"
-                        onChange={(e) => { setcreateHistory({ ...createHistory, description: e.target.value }) }} />
-                        <p>Saison :</p>
-                    <input id="date" name="date" value={createHistory.date} required type="text"
-                        onChange={(e) => { setcreateHistory({ ...createHistory, date: e.target.value }) }} />
+                    <p>Nom</p>
+                    <input id="firstname" name="firstname" value={createClient.firstname} required type="text"
+                        onChange={(e) => { setcreateClient({ ...createClient, firstname: e.target.value }) }} />
+                    <p>Prenom</p>
+                    <input id="lastname" name="lastname" value={createClient.lastname} required type="text"
+                        onChange={(e) => { setcreateClient({ ...createClient, lastname: e.target.value }) }} />
+
+                    <p>Photo</p>
+                    <input id="profil_pic" name="profil_pic" value={createClient.profil_pic} required type="text"
+                        onChange={(e) => { setcreateClient({ ...createClient, profil_pic: e.target.value }) }} />
+
+                    <p>Club</p>
+                    <input id="club" name="club" value={createClient.club} required type="text"
+                        onChange={(e) => { setcreateClient({ ...createClient, club: e.target.value }) }} />
                 </ModalBody>
                 <ModalFooter >
-                    <form onSubmit={createDataHistory}>
+                    <form onSubmit={createDataClient}>
                         <Button type="submit" onClick={toggle}>Enregistrer</Button>{' '}
                         <Button onClick={toggle}>Fermer</Button>
                     </form>

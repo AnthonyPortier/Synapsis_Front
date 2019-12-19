@@ -25,6 +25,7 @@ const Routes = () => {
         profil_pic: '',
         role: ''
     })
+
     //hooks pour get create et delete history
     const [history, sethistory] = useState([])
     const [createHistory, setcreateHistory] = useState({
@@ -47,9 +48,20 @@ const Routes = () => {
         date: '',
         UserId: 0
     })
+
+     //hooks pour get et update une client
+     const [client, setClient] = useState([])
+     const [createClient, setcreateClient] = useState({
+        firstname: '',
+        lastname: '',
+        profil_pic:'',
+        club:'',
+        UserId: 0
+     })
+
     useEffect(() => {
         fetchDataUser()
-    }, [{ ...idUser }])
+    }, [])
     //fetch de la data du user 
     const fetchDataUser = () => {
         axios.get(`http://localhost:5000/users/1`)
@@ -59,10 +71,11 @@ const Routes = () => {
     // update de la data du user
     const updateDataUser = (e) => {
         e.preventDefault()
-        console.log(updateUser)
-        axios.put(`http://localhost:5000/users/1`, updateUser)
-            .then(res => setUpdateUser(res.data))
+        axios.put(`http://localhost:5000/users/1`, idUser)
+            .then(res => console.log(res.data))
             .catch((err) => console.log(err))
+            window.location.reload(false);
+
     }
     useEffect(() => {
         fetchDataHistory()
@@ -78,6 +91,8 @@ const Routes = () => {
         e.preventDefault()
         axios.post('http://localhost:5000/history', createHistory)
             .catch((err) => console.log(err))
+            window.location.reload(false);
+
     }
     //delete de history
      const fetchDeleteHistory = (id) => {
@@ -102,6 +117,8 @@ const Routes = () => {
         e.preventDefault()
         axios.post('http://localhost:5000/palmares', createPalmares)
             .catch((err) => console.log(err))
+            window.location.reload(false);
+
     }
     //delete de palmares
     const fetchDeletePalmares = (id) => {
@@ -128,13 +145,40 @@ const Routes = () => {
         e.preventDefault()
         axios.post('http://localhost:5000/distinction', createDistinction)
             .catch((err) => console.log(err))
+
     }
 
     //delete de distinction
      const fetchDeleteDistinction = (id) => {
         axios.delete(`http://localhost:5000/distinction/${id}`)
         .catch((err) => console.log(err))
-        window.location.reload(false);
+
+     }
+
+
+       useEffect(() => {
+        fetchDataClient()
+    }, [])
+    //fetch de la data des clients
+    const fetchDataClient = () => {
+        axios.get(`http://localhost:5000/clients`)
+            .then(res => setClient(res.data))
+            .catch((err) => console.log(err))
+    }
+    //post de clients
+    const createDataClient = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:5000/clients', createClient)
+            .catch((err) => console.log(err))
+
+
+    }
+
+    //delete de clients
+     const fetchDeleteClient = (id) => {
+        axios.delete(`http://localhost:5000/clients/${id}`)
+        .catch((err) => console.log(err))
+
 
      }
     return (
@@ -146,58 +190,59 @@ const Routes = () => {
             <p>{idUser.password}</p>
             <p>{idUser.birthday}</p>
             <p>{idUser.birthday_place}</p>
-            <p>{idUser.actual_place}</p>
+            <p>{idUser.actual_club}</p>
             <p>{idUser.categorie}</p>
             <p>{idUser.size}</p>
             <p>{idUser.weight}</p>
             <p>{idUser.profil_pic}</p>
             <p>{idUser.role}</p>
             <p>{idUser.hobbies}</p>
-            <h1>autres champs du user à modifier ou à rentrer</h1>
-            <form onSubmit={updateDataUser}>
 
+            <h1>autres champs du user à modifier ou à rentrer</h1>
+
+            <form onSubmit={updateDataUser}>
                 <p>firstname</p>
-                <input id="firstname" name="firstname" value={updateUser.firstname} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.firstname, firstname: e.target.value }) }} />
+                <input id="firstname" name="firstname" value={idUser.firstname} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, firstname: e.target.value }) }} />
                 <p>lastname</p>
-                <input id="lastname" name="lastname" value={updateUser.lastname} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.lastname, lastname: e.target.value }) }} />
+                <input id="lastname" name="lastname" value={idUser.lastname} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, lastname: e.target.value }) }} />
                 <p>email</p>
-                <input id="email" name="email" value={updateUser.email} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.email, email: e.target.value }) }} />
+                <input id="email" name="email" value={idUser.email} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, email: e.target.value }) }} />
                 <p>password</p>
-                <input id="password" name="password" value={updateUser.password} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.password, password: e.target.value }) }} />
-                <p>birthday</p>
-                <input id="birthday" name="birthday" value={updateUser.birthday} type="date"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.birthday, birthday: e.target.value }) }} />
+                <input id="password" name="password" value={idUser.password} type="password"
+                    onChange={(e) => { setIdUser({ ...idUser, password: e.target.value }) }} />
+                < p > birthday </p>
+                <input id="birthday" name="birthday" value={idUser.birthday} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, birthday: e.target.value }) }} />
 
                 <p>birthday place</p>
-                <input id="birthday_place" name="birthday_place" value={updateUser.birthday_place} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.birthday_place, birthday_place: e.target.value }) }} />
+                <input id="birthday_place" name="birthday_place" value={idUser.birthday_place} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, birthday_place: e.target.value }) }} />
                 <p>actual_club</p>
-                <input id="actual_club" name="actual_club" value={updateUser.actual_club} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.actual_club, actual_club: e.target.value }) }} />
+                <input id="actual_club" name="actual_club" value={idUser.actual_club} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, actual_club: e.target.value }) }} />
                 <p>categorie</p>
-                <input id="categorie" name="categorie" value={updateUser.categorie} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.categorie, categorie: e.target.value }) }} />
+                <input id="categorie" name="categorie" value={idUser.categorie} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, categorie: e.target.value }) }} />
 
                 <p>size</p>
-                <input id="size" name="size" value={updateUser.size} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.size, size: e.target.value }) }} />
+                <input id="size" name="size" value={idUser.size} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, size: e.target.value }) }} />
                 <p>weight</p>
-                <input id="weight" name="weight" value={updateUser.weight} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.weight, weight: e.target.value }) }} />
+                <input id="weight" name="weight" value={idUser.weight} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, weight: e.target.value }) }} />
                 <p>profil_pic</p>
-                <input id="profil_pic" name="profil_pic" value={updateUser.profil_pic} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.profil_pic, profil_pic: e.target.value }) }} />
+                <input id="profil_pic" name="profil_pic" value={idUser.profil_pic} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, profil_pic: e.target.value }) }} />
                 <p>role</p>
-                <input id="role" name="role" value={updateUser.role} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.role, role: e.target.value }) }} />
+                <input id="role" name="role" value={idUser.role} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, role: e.target.value }) }} />
                 <h1>Hobbies</h1>
-                <input id="hobbies" name="hobbies" value={updateUser.hobbies} type="text"
-                    onChange={(e) => { setUpdateUser({ ...updateUser.hobbies, hobbies: e.target.value }) }} />
-                <button type='submit'>submit</button>
+                <input id="hobbies" name="hobbies" value={idUser.hobbies} type="text"
+                    onChange={(e) => { setIdUser({ ...idUser, hobbies: e.target.value }) }} />
+                <button type='submit'>submit</button> 
             </form>
             {/* history place */}
             <h1>Parcours sportif</h1>
@@ -208,7 +253,6 @@ const Routes = () => {
                     <p>{history.description}</p>
                     <p>{history.UserId}</p>
                 </div>
-
             )}
 
             <form onSubmit={createDataHistory}>
@@ -228,7 +272,6 @@ const Routes = () => {
                     <p>{x.description}</p>
                     <p>{x.UserId}</p>
                     <button onClick={()=>fetchDeletePalmares(x.id)} >delete</button>
-
                 </div>
 
             )}
@@ -245,12 +288,12 @@ const Routes = () => {
             </form>
 
             <h1>Distinction personnelle</h1>
-            {distinction.filter(distinction => distinction.UserId === idUser.id).map(distinction =>
+            {distinction.filter(distinction => distinction.UserId === idUser.id).map(x =>
                 <div>
-                    <p>{distinction.name}</p>
-                    <p>{distinction.description}</p>
-                    <p>{distinction.UserId}</p>
-                    <button onClick={()=>fetchDeleteDistinction(distinction.id)} >delete</button>
+                    <p>{x.name}</p>
+                    <p>{x.date}</p>
+                    <p>{x.UserId}</p>
+                    <button onClick={()=>fetchDeleteDistinction(x.id)} >delete</button>
 
                 </div>
 
@@ -260,11 +303,43 @@ const Routes = () => {
                 <p>name</p>
                 <input id="name" name="name" value={createDistinction.name} required type="text"
                     onChange={(e) => { setcreateDistinction({ ...createDistinction, name: e.target.value }) }} />
-                <p>description</p>
-                <input id="description" name="description" value={createDistinction.description} required type="text"
-                    onChange={(e) => { setcreateDistinction({ ...createDistinction, description: e.target.value }) }} />
+                <p>date</p>
+                <input id="date" name="date" value={createDistinction.date} required type="date"
+                    onChange={(e) => { setcreateDistinction({ ...createDistinction, date: e.target.value }) }} />
 
                 <button type="submit" onClick={(e) => { setcreateDistinction({ ...createDistinction, UserId: idUser.id }) }}>submit</button>
+            </form>
+
+{/* form des clients de l'agent */}
+            
+            <h1>Client</h1>
+            {client.filter(client => client.UserId === idUser.id).map(x =>
+                <div>
+                    <p>{x.firstname}</p>
+                    <p>{x.lastname}</p>
+                    <p>{x.club}</p>
+                    <p>{x.profil_pic}</p>
+                    <button onClick={()=>fetchDeleteClient(x.id)} >delete</button>
+
+                </div>
+
+            )}
+            <form onSubmit={createDataClient}>
+                <p>Firstname</p>
+                <input id="firstname" name="firstname" value={createClient.firstname} required type="text"
+                    onChange={(e) => { setcreateClient({ ...createClient, firstname: e.target.value }) }} />
+                <p>Lastname</p>
+                <input id="lastname" name="lastname" value={createClient.lastname} required type="text"
+                    onChange={(e) => { setcreateClient({ ...createClient, lastname: e.target.value }) }} />
+
+                 <p>Profil_pic</p>
+                <input id="profil_pic" name="profil_pic" value={createClient.profil_pic} required type="text"
+                    onChange={(e) => { setcreateClient({...createClient, profil_pic: e.target.value }) }} />
+
+                <p>Club</p>
+                <input id="club" name="club" value={createClient.club} required type="text"
+                    onChange={(e) => { setcreateClient({ ...createClient, club: e.target.value }) }} />
+                <button type="submit" onClick={(e) => { setcreateClient({ ...createClient, UserId: idUser.id }) }}>submit</button>
             </form>
 
 
