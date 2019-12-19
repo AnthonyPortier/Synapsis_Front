@@ -99,7 +99,11 @@ const RegisterPage = () => {
               <button className="button-fb">Continuer avec Facebook</button>
               <div className="register-footer">
                 Déjà inscrit(e) ?
+<<<<<<< HEAD
                 <Link to='/login'> S'identifier</Link>
+=======
+                <Link to='/'> S'identifier</Link>
+>>>>>>> origin/registerpage
               </div>
             </div>
           </Row>
