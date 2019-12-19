@@ -5,7 +5,7 @@ import './RegisterPage.css'
 import logo from '../../img/logoVert.png'
 
 
-const RegisterPage = ()=>{
+const RegisterPage = () => {
 
 
     return(
@@ -56,47 +56,56 @@ const RegisterPage = ()=>{
 
     <Form className='form-register'>
       <Row form>
-        <Col md={6}>
+        <Col md={11}>
           <FormGroup>
             <Label className="prenom-register" for="prenom">Prénom</Label>
-            <Input type="text" name="prenom" id="prenom" placeholder="Prénom" />
+            <Input type="text" name="prenom" id="prenom"  />
           </FormGroup>
         </Col>
-        <Col md={6}>
+
+        <Col md={11}>
           <FormGroup>
             <Label for="Nom">Nom</Label>
-            <Input type="text" name="nom" id="Nom" placeholder="Nom" />
+            <Input type="text" name="nom" id="Nom"  />
           </FormGroup>
         </Col>
-      </Row>
-      <FormGroup>
-        <Label for="exampleAddress">Date de naissance</Label>
-        <Input type="text" name="Date_de_naissance" id="Date_de_naissance" placeholder="Date de naissance"/>
-      </FormGroup>
-      <FormGroup>
-        <Label for="email">Adresse e-mail</Label>
-        <Input type="text" name="email" id="email" placeholder="email"/>
-      </FormGroup>
-      <Row form>
-        <Col md={6}>
+
+        <Col md={11}>
           <FormGroup>
-            <Label for="Mot_de_passe">Mot de passe(6 charactères minimun)</Label>
-            <Input type="text" name="Mot_de_passe" id="Mot_de_passe" placeholder="Mot de passe"/>
+            <Label for="exampleAddress">Date de naissance</Label>
+            <Input type="text" name="Date_de_naissance" id="Date_de_naissance" />
           </FormGroup>
         </Col>
-        <p>Vous acceptez les conditions d'utilisation, la Politique de confidentialité et la Politique relative aux cookies de Synapse.</p>
+        
+        <Col md={11}>
+          <FormGroup>
+            <Label for="email">Adresse e-mail</Label>
+            <Input type="text" name="email" id="email" />
+          </FormGroup>
+        </Col>
+      
+        <Col md={11}>
+          <FormGroup>
+            <Label for="Mot_de_passe">Mot de passe (6 charactères minimun)</Label>
+            <Input type="text" name="Mot_de_passe" id="Mot_de_passe" />
+          </FormGroup>
+        </Col>
 
- <Link to='/profilePage'><button>Accepter et s'inscrire</button>
-<p>OU</p>
-<button>Continuer avec Facebook</button>
-<p>Déja inscrit ? </p></Link>
+        <p className="p-register">Vous acceptez les conditions d'utilisation, la Politique de confidentialité et la Politique relative aux cookies de Synapse.</p>
+          
+          <div className="bottom-register">
+          <Link to='/profilePage'><button className="button-signin">Accepter et s'inscrire</button></Link>
+            <div className="separation">OU</div>
+              <button className="button-fb">Continuer avec Facebook</button>
+              <div className="register-footer">
+                Déjà inscrit(e) ?
+                <Link to='/landingPage'> S'identifier</Link>
+              </div>
+          </div>
 
       </Row>
-      <Link to='/landingPage'>S'identifier
-      <Button className="button-signin">Accepter et s'inscrire</Button>
-      </Link>
     </Form>
-
+      
     </div>
   </div>
     )

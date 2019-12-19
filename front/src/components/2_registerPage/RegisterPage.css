@@ -17,7 +17,6 @@
     display: flex;
     width: 100%;
     height: 100vh;
-   
 }
 .register-h1 {
     font-size: 5rem;
@@ -25,12 +24,12 @@
     color: white;
 }
 .register-h2{
-    font-size: 1rem;
+    font-size: 3rem;
     color: white;
     text-align: center;
 }
 .form-register {
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: #E1E1E1;
     margin: auto 55px;
 
@@ -42,13 +41,55 @@
     width: 50%;
     float: right;
 }
-.button-signin{
-    width: 70%;
-    border-radius: 10%;
-    background-color: #4B905E;
-    ;
-}
 .prenom-register {
     padding-right: 2px;
 }
 
+.p-register{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.bottom-register{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+    width: 100%;
+
+}
+
+
+.button-fb{
+    background-color:#3C579C;
+    border-radius: 20px;
+    color: white;
+    width: 90%;
+    margin: auto;
+}
+.button-signin {
+    width: 90%;
+    border-radius: 20px;
+    background-color: #4B905E;
+    color: white;
+}
+.bottom-register a{
+    display: flex;
+    justify-content: center;
+}
+
+.form-row{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.separation{
+    text-align: center;
+}
+.register-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+
+}
