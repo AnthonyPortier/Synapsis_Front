@@ -152,6 +152,8 @@ const Routes = () => {
      const fetchDeleteDistinction = (id) => {
         axios.delete(`http://localhost:5000/distinction/${id}`)
         .catch((err) => console.log(err))
+        window.location.reload(false);
+
 
      }
 
@@ -178,6 +180,8 @@ const Routes = () => {
      const fetchDeleteClient = (id) => {
         axios.delete(`http://localhost:5000/clients/${id}`)
         .catch((err) => console.log(err))
+        window.location.reload(false);
+
 
 
      }

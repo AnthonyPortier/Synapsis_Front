@@ -9,11 +9,14 @@ import {
     NavLink,
     Input
 } from 'reactstrap';
+import SearchBar from '../5_searchBar/SearchBar'
 
 const NavBar = (props)=>{
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
+
+  
 
     return(
         <div>
@@ -22,13 +25,7 @@ const NavBar = (props)=>{
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <Input placeholder='rechercher'
-            id="rechercher"
-            name="rechercher"
-            // value={e.target.value}
-            type="text"
-            // onChange={}
-            />
+            <SearchBar/>
             <NavItem>
               <NavLink href="/ProfilePage">Acceuil</NavLink>
             </NavItem>
