@@ -27,6 +27,16 @@ const NavBar = (props)=>{
       history.push(`/`)
     }
 
+    const userLink = (
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <a href="" onClick={logOut} className="nav-link">
+            Logout
+          </a>
+        </li>
+      </ul>
+    )  
+    
     const loginRegLink = (
       <ul className="navbar-nav">
         <li className="nav-item">
