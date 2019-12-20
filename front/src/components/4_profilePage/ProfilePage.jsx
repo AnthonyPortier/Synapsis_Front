@@ -84,7 +84,7 @@ const ProfilePage = () => {
 
             <>
 
-            {idUser.role === "joueur" || "entrainement" ?
+            {idUser.role === "joueur" || "entraineur" ?
 
             <div className="profile-container">
 
