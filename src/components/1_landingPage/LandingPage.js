@@ -39,7 +39,7 @@ return (
                 name="email" value={email} required type="email" onChange={(e) => setEmail(e.target.value)} />
             <input className='LandingPage-input' placeholder="Mot de passe"
                 id="password"
-                name="password" value={password} required type='text' onChange={(e) => setPassword(e.target.value)} />
+                name="password" value={password} required type='password' onChange={(e) => setPassword(e.target.value)} />
             <button className='LandingPage-button' type='submit'>Se connecter</button>
         </form>
         <div className="register-already-subscribe">

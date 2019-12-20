@@ -18,6 +18,23 @@ const NavBar = (props)=>{
 
     const toggle = () => setIsOpen(!isOpen);
 
+
+    const logOut = (e) => {
+      e.preventDefault()
+      localStorage.removeItem('userToken')
+      history.push(`/`)
+    }
+
+    const loginRegLink = (
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to="/login" className="nav-link">
+            Login
+          </Link>
+        </li>
+      </ul>
+    )
+
     return(
         <div className='Navbar-full' style = {{position:'sticky',top:'0px', backgroundColor:'#535353', zIndex:'2'}}>
             <Navbar color="#535353" light expand="md">
@@ -45,7 +62,7 @@ const NavBar = (props)=>{
               <NavLink className='mr-2' href="/ProfilePage">Notifications</NavLink>
             </NavItem>
           </Nav>
-          <NavLink className='mr-2' href="/ProfilePage">Ma fiche</NavLink>
+          {localStorage.userToken ? userLink : loginRegLink}
         </Collapse>
       </Navbar>
 
