@@ -20,6 +20,7 @@ const ModalClient = (props) => {
         lastname: '',
         profil_pic: '',
         club: '',
+        UserId:''
     })
 
     const createDataClient = (e) => {
@@ -35,6 +36,7 @@ const ModalClient = (props) => {
         <div>
             <Button onClick={toggle}><img className="plus" src={Plus} alt="plus" /></Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
+                <form onSubmit={createDataClient}> 
                 <ModalHeader toggle={toggle}>Clients</ModalHeader>
                 <ModalBody>
                     <p>Nom</p>
@@ -53,11 +55,11 @@ const ModalClient = (props) => {
                         onChange={(e) => { setcreateClient({ ...createClient, club: e.target.value }) }} />
                 </ModalBody>
                 <ModalFooter >
-                    <form onSubmit={createDataClient}>
-                        <Button className="image-btn" type="submit" onClick={toggle}>Enregistrer</Button>{' '}
+                        <Button className="image-btn" type="submit" onClick={toggle,() => {setcreateClient({ ...createClient, UserId: props.id })}}>Enregistrer</Button>{' '}
                         <Button className="image-btn" onClick={toggle}>Fermer</Button>
-                    </form>
-                </ModalFooter>
+                </ModalFooter>        
+            </form>
+
             </Modal>
         </div>
     );

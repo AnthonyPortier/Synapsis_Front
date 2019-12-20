@@ -72,6 +72,13 @@ const ProfilePage = () => {
             .then(res => sethistory(res.data))
             .catch((err) => console.log(err))
     }
+    //delete de history
+    const fetchDeleteHistory = (id) => {
+        axios.delete(`http://synaps3.herokuapp.com/history/${id}`)
+            .catch((err) => console.log(err))
+
+    }
+
 
 
     //fetch de la data des palmares
@@ -80,14 +87,26 @@ const ProfilePage = () => {
             .then(res => setpalmares(res.data))
             .catch((err) => console.log(err))
     }
+    //delete de palmares
+    const fetchDeletePalmares = (id) => {
+        axios.delete(`http://synaps3.herokuapp.com/palmares/${id}`)
+            .catch((err) => console.log(err))
+
+    }
 
 
     //fetch de la data des distinctions
     const fetchDataDistinction = () => {
-        axios.get(`http://synaps3.herokuapp.com/distinctions`)
+        axios.get(`http://synaps3.herokuapp.com/distinction`)
             .then(res => setDistinction(res.data))
             .catch((err) => console.log(err))
     }
+    //delete de distinction
+     const fetchDeleteDistinction = (id) => {
+         axios.delete(`http://synaps3.herokuapp.com/distinction/${id}`)
+        .catch((err) => console.log(err))
+     }
+
 
     //fetch de la data des clients
     const fetchDataClient = () => {
@@ -95,6 +114,13 @@ const ProfilePage = () => {
             .then(res => setClient(res.data))
             .catch((err) => console.log(err))
     }
+     //delete de clients
+     const fetchDeleteClient = (id) => {
+         axios.delete(`http://synaps3.herokuapp.com/clients/${id}`)
+        .catch((err) => console.log(err))
+
+
+     }
 
 
     return (
@@ -129,7 +155,7 @@ const ProfilePage = () => {
                             <div className="profile-title-div">
                                 <p className="profile-title">Fiche sportive</p>
                                 <div className="profile-button-modal">
-                                    <ModalInfo />
+                                    <ModalInfo id={id} />
                                 </div>
                             </div>
                             <div className="profile-fiche-sportive">
@@ -146,15 +172,19 @@ const ProfilePage = () => {
                             <div className="profile-title-div">
                                 <p className="profile-title">Parcours sportif</p>
                                 <div className="profile-button-modal">
-                                    <ModalParcours />
+                                    <ModalParcours id={id} />
                                 </div>
                             </div>
                             <div className="profile-parcours-sportif">
+                            
                                 <div className="profile-div-club-map">
-                                    <p className="profile-field">{history.name}</p>
-                                    <p className="profile-field">{history.poste}</p>
-                                    <p className="profile-field" >{history.description}</p>
-                                    <p className="profile-field">{history.date}</p>
+                                    {history.filter(history => history.UserId === idUser.id).map(history =>
+                                        <div>
+                                            <button onClick={() => fetchDeleteHistory(history.id)} >delete</button>
+                                            <p>{history.name}</p>
+                                            <p>{history.description}</p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
@@ -164,13 +194,19 @@ const ProfilePage = () => {
                             <div className="profile-title-div">
                                 <p className="profile-title">Palmares</p>
                                 <div className="profile-button-modal">
-                                    <ModalPalmares />
+                                    <ModalPalmares id={id} />
                                 </div>
                             </div>
                             <div className="profile-palmares">
                                 <div className="profile-div-palmares-map">
-                                    <p id="profile-field-bold">{palmares.name}</p>
-                                    <p>{palmares.description}</p>
+                                    {palmares.filter(x => x.UserId === idUser.id).map(x =>
+                                        <div>
+                                            <p>{x.name}</p>
+                                            <p>{x.description}</p>
+                                            <button onClick={() => fetchDeletePalmares(x.id)} >delete</button>
+                                        </div>
+                                    )}
+
                                 </div>
                             </div>
                         </div>
@@ -179,13 +215,20 @@ const ProfilePage = () => {
                             <div className="profile-title-div">
                                 <p className="profile-title">Distinctions personnelles</p>
                                 <div className="profile-button-modal">
-                                    <ModalDistinction />
+                                    <ModalDistinction id={id} />
                                 </div>
                             </div>
                             <div className="profile-distinctions">
                                 <div className="profile-div-distinctions-map">
-                                    <p id="profile-field-bold">{distinction.name}</p>
-                                    <p>{distinction.description}</p>
+                                    {distinction.filter(distinction => distinction.UserId === idUser.id).map(x =>
+                                        <div>
+                                            <p>{x.name}</p>
+                                            <p>{x.date}</p>
+                                            <button onClick={() => fetchDeleteDistinction(x.id)} >delete</button>
+
+                                        </div>
+
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -248,7 +291,7 @@ const ProfilePage = () => {
                                 <div className="profile-title-div">
                                     <p className="profile-title">Distinctions personnelles</p>
                                     <div className="profile-button-modal">
-                                        <ModalDistinction />
+                                        <ModalDistinction id={id}/>
                                     </div>
                                 </div>
                                 <div className="profile-distinctions">

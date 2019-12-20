@@ -18,6 +18,7 @@ const ModalDistinction = (props) => {
   const [createDistinction, setcreateDistinction] = useState({
     name: '',
     date: '',
+    UserId:''
   })
 
   const createDataDistinction = (e) => {
@@ -30,6 +31,7 @@ const ModalDistinction = (props) => {
     <div>
       <Button onClick={toggle}><img className="plus" src={Plus} alt="plus" /></Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
+        <form onSubmit={createDataDistinction}>
         <ModalHeader toggle={toggle}>Distinctions personnelles</ModalHeader>
         <ModalBody>
           <p>Distinction :</p>
@@ -40,11 +42,11 @@ const ModalDistinction = (props) => {
             onChange={(e) => { setcreateDistinction({ ...createDistinction, date: e.target.value }) }} />
         </ModalBody>
         <ModalFooter >
-          <form onSubmit={createDataDistinction}>
-            <Button className="image-btn" type="submit" onClick={toggle}>Enregistrer</Button>{' '}
+            <Button className="image-btn" type="submit" onClick={toggle, () => {setcreateDistinction({ ...createDistinction, UserId: props.id })}}>Enregistrer</Button>{' '}
             <Button className="image-btn" onClick={toggle}>Fermer</Button>
-          </form>
         </ModalFooter>
+        </form>
+
       </Modal>
     </div>
   );

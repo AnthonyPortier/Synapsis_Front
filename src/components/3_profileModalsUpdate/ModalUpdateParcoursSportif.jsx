@@ -19,9 +19,10 @@ const ModalParcours = (props) => {
         name: '',
         poste: '',
         date: '',
-        description: ''
+        description: '',
+        UserId:''
     })
-
+    console.log(props.id +'du ')
     const createDataHistory = (e) => {
         e.preventDefault()
         axios.post('https://synaps3.herokuapp.com/history', createHistory)
@@ -32,6 +33,8 @@ const ModalParcours = (props) => {
         <div>
             <Button onClick={toggle}><img className="plus" src={Plus} alt="plus" /></Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
+                <form onSubmit={createDataHistory}>
+
                 <ModalHeader toggle={toggle}>Parcours Sportif</ModalHeader>
                 <ModalBody>
                     <p>Club :</p>
@@ -48,11 +51,11 @@ const ModalParcours = (props) => {
                         onChange={(e) => { setcreateHistory({ ...createHistory, date: e.target.value }) }} />
                 </ModalBody>
                 <ModalFooter >
-                    <form onSubmit={createDataHistory}>
-                        <Button className="image-btn" type="submit" onClick={toggle}>Enregistrer</Button>{' '}
+                        <Button className="image-btn" type="submit" onClick={toggle,() => { setcreateHistory({ ...createHistory, UserId: props.id })}}>Enregistrer</Button>{' '}
                         <Button className="image-btn" onClick={toggle}>Fermer</Button>
-                    </form>
-                </ModalFooter>
+                </ModalFooter>         
+                </form>
+
             </Modal>
         </div>
     );

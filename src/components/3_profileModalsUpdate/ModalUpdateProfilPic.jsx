@@ -38,6 +38,8 @@ const ModalProfilPic = (props) => {
 
     }
 
+    
+
     const [image, setImage] = useState(null)
     const onChangeHandler = (e) => {
         setImage(e.target.files)

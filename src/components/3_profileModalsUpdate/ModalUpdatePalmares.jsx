@@ -21,6 +21,8 @@ const ModalPalmares = (props) => {
     const [createPalmares, setcreatePalmares] = useState({
         name: '',
         description: '',
+        UserId: ''
+
     })
 
     const createDataPalmares = (e) => {
@@ -45,7 +47,7 @@ const ModalPalmares = (props) => {
                 </ModalBody>
                 <ModalFooter >
                     <form onSubmit={createDataPalmares}>
-                        <Button className="image-btn" type="submit" onClick={toggle}>Enregistrer</Button>{' '}
+                        <Button className="image-btn" type="submit" onClick={toggle, (e) => { setcreatePalmares({ ...createPalmares, UserId: props.id }) }}>Enregistrer</Button>{' '}
                         <Button className="image-btn" onClick={toggle}>Fermer</Button>
                     </form>
                 </ModalFooter>
