@@ -32,11 +32,7 @@ const ModalProfilPic = (props) => {
 
     const updateDataUser = (e) => {
         e.preventDefault()
-<<<<<<< HEAD
-        axios.put(`https://synaps3.herokuapp.com/users/${1}`, idUser)
-=======
         axios.put(`https://synaps3.herokuapp.com/users/${props.id}`, idUser)
->>>>>>> d24444de98e1d2b4c8d2674b4f3afd4619447018
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 

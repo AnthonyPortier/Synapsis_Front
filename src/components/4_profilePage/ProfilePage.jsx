@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import NavBar from '../6_navBar/NavBar'
 import './ProfilePage.css'
 import axios from 'axios'
-import jwt_decode from 'jwt-decode'
-import ModalProfilPic from '../3_profileModalsUpdate/ModalUpdateProfilPic'
+    import ModalProfilPic from '../3_profileModalsUpdate/ModalUpdateProfilPic'
 import ModalParcours from '../3_profileModalsUpdate/ModalUpdateParcoursSportif'
 import ModalInfo from '../3_profileModalsUpdate/ModalUpdateInfo'
 import ModalPalmares from '../3_profileModalsUpdate/ModalUpdatePalmares'
@@ -120,7 +119,7 @@ console.log(id)
                         <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
                         <img className="profile-img" src={idUser.profil_pic}></img>
                         <div className="profile-info-div">
-                            <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
+                            <div className="profile-button-modal"><ModalProfilPic id={id}                /></div>
                             <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
                             <p className="profile-role">{idUser.role === "joueur" ? "Joueur" : "entraineur" ? "Entrainement" : ""}</p>
                             <p className="profile-club">{idUser.actual_club}</p>
@@ -153,7 +152,7 @@ console.log(id)
                             <div className="profile-title-div">
                                 <p className="profile-title">Parcours sportif</p>
                                 <div className="profile-button-modal">
-                                    <ModalParcours />
+                                    <ModalParcours id={id} />
                                 </div>
                             </div>
                             <div className="profile-parcours-sportif">
@@ -171,7 +170,7 @@ console.log(id)
                             <div className="profile-title-div">
                                 <p className="profile-title">Palmares</p>
                                 <div className="profile-button-modal">
-                                    <ModalPalmares />
+                                    <ModalPalmares id={id} />
                                 </div>
                             </div>
                             <div className="profile-palmares">
@@ -186,7 +185,7 @@ console.log(id)
                             <div className="profile-title-div">
                                 <p className="profile-title">Distinctions personnelles</p>
                                 <div className="profile-button-modal">
-                                    <ModalDistinction />
+                                    <ModalDistinction id={id}    />
                                 </div>
                             </div>
                             <div className="profile-distinctions">
