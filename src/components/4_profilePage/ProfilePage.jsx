@@ -10,7 +10,31 @@ import ModalDistinction from '../3_profileModalsUpdate/ModalUpdateDistinctionsPe
 
 const ProfilePage = () => {
 
+
+    // Florian work for dynamique profil route / work with if !
     
+    // const [id, setId] = useState('')
+    // const [info, setInfo] = useState({})
+    // useEffect(() => {
+    //     getProfil()
+    // }, [])
+    // useEffect(() => {
+    //     getInfo()
+    // }, [id])
+    // const getInfo = () => {
+    //     Axios.get(`https://synaps3.herokuapp.com/users/${id}`)
+    //     .then(res => console.log(res))
+    //     .then(res => setInfo(res.data))
+    //     .catch(err => console.log(err))
+    // }
+    // const getProfil = () => {
+    //     const token = localStorage.userToken
+    //     const decoded = jwt_decode(token)
+    //     setId(decoded.id)
+    // }
+
+
+
     //hooks pour get et update un user
     const [idUser, setIdUser] = useState([])
     
