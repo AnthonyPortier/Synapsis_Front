@@ -53,7 +53,7 @@ const NavBar = (props)=>{
               <NavLink className='mr-2' href="/ProfilePage">Accueil</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className='mr-2' href="/ProfilePage">Réseau</NavLink>
+              <NavLink className='mr-2' href="/ProfilePage">Reseau</NavLink>
             </NavItem>
             <NavItem>
               <NavLink className='mr-2' href="/ProfilePage">Messagerie</NavLink>
