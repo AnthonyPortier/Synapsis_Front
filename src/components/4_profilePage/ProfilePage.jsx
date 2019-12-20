@@ -99,7 +99,7 @@ const ProfilePage = () => {
                         <div className="profile-info-div">
                             <div className="profile-button-modal"><ModalProfilPic /></div>
                             <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
-                            <p className="profile-role">{idUser.role === "joueur" ? Joueur : "entraineur" ? Entrainement : ""}</p>
+                            <p className="profile-role">{idUser.role === "joueur" ? "Joueur" : "entraineur" ? "Entrainement" : ""}</p>
                             <p className="profile-club">{idUser.actual_club}</p>
 
                         </div>
