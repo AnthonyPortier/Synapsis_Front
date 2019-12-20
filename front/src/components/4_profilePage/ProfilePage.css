@@ -1,0 +1,166 @@
+.profile-container {
+    display:flex;
+    width:100%;
+    flex-direction: column;
+    background-color: #D3D3D3
+}
+
+.profile-page-div {
+    display:flex;
+    flex-direction: column;
+    width:80%;
+    margin: 0 auto;
+}
+
+/* First DIV */
+
+.profile-img-div{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    right : 50%;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+.profile-div {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    box-shadow: inset 0 0 10px #000000;
+    background-color: white;
+}
+
+.baneer-profile {
+    width:100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #000000;
+    
+}
+
+#baneer-img {
+    width:100%;
+    height: 200px;
+}
+
+.profile-info-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+.profile-name {
+    margin-top: 50px;
+    margin-bottom: 2px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.profile-role {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.profile-count-relation-div {
+    display:flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    background-color:#4B905E;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+.relation-count{
+    margin-top:10px;
+    color: white;
+    font-weight: bold;
+    top: 50%;
+}
+
+/* Second DIV */
+
+.profile-title-div {
+
+    display:flex;
+    justify-content: center;
+    background-color:#4B905E;
+    box-shadow: inset 0 0 10px #000000;
+   
+}
+
+.profile-title {
+
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+}
+
+.profile-fiche-sportive {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.profile-field {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Third Div */
+
+.profile-parcours-sportif {
+    display:flex;
+    flex-direction: column;   
+}
+
+.profile-div-club-map {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display:flex;
+    flex-direction: column; 
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+/* Fourth Div */ 
+
+.profile-palmares {
+    display:flex;
+    flex-direction: column;   
+}
+
+.profile-div-palmares-map {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#profile-field-bold{
+    font-weight: bold;
+}
+
+/* Fifth DIV */
+
+.profile-distinctions {
+    display:flex;
+    flex-direction: column;   
+}
+
+.profile-div-distinctions-map {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
