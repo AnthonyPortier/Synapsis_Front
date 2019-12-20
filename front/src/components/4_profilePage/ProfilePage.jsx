@@ -7,7 +7,6 @@ import ModalParcours from '../3_profileModalsUpdate/ModalUpdateParcoursSportif'
 import ModalInfo from '../3_profileModalsUpdate/ModalUpdateInfo'
 import ModalPalmares from '../3_profileModalsUpdate/ModalUpdatePalmares'
 import ModalDistinction from '../3_profileModalsUpdate/ModalUpdateDistinctionsPersonnelles'
-{/*import ModalClient from '../3_profileModalsUpdate/ModalsUpdateClients'*/}
 
 const ProfilePage = () => {
 
@@ -34,7 +33,7 @@ const ProfilePage = () => {
     }, [])
     //fetch de la data du user 
     const fetchDataUser = () => {
-        axios.get(`http://localhost:5000/users/1`)
+        axios.get(`http://synaps3.herokuapp.com/users/1`)
             .then(res => setIdUser(res.data))
             .catch((err) => console.log(err))
     }
@@ -44,7 +43,7 @@ const ProfilePage = () => {
     }, [])
     //fetch de la data des history
     const fetchDataHistory = () => {
-        axios.get(`http://localhost:5000/history`)
+        axios.get(`http://synaps3.herokuapp.com/history`)
             .then(res => sethistory(res.data))
             .catch((err) => console.log(err))
     }
@@ -54,7 +53,7 @@ const ProfilePage = () => {
     }, [])
     //fetch de la data des palmares
     const fetchDataPalmares = () => {
-        axios.get(`http://localhost:5000/palmares`)
+        axios.get(`http://synaps3.herokuapp.com/palmares`)
             .then(res => setpalmares(res.data))
             .catch((err) => console.log(err))
     }
@@ -65,7 +64,7 @@ const ProfilePage = () => {
     }, [])
     //fetch de la data des distinctions
     const fetchDataDistinction = () => {
-        axios.get(`http://localhost:5000/distinctions`)
+        axios.get(`http://synaps3.herokuapp.com/distinctions`)
             .then(res => setDistinction(res.data))
             .catch((err) => console.log(err))
     }
@@ -75,7 +74,7 @@ const ProfilePage = () => {
     }, [])
     //fetch de la data des clients
     const fetchDataClient = () => {
-        axios.get(`http://localhost:5000/clients`)
+        axios.get(`http://synaps3.herokuapp.com/clients`)
             .then(res => setClient(res.data))
             .catch((err) => console.log(err))
     }
@@ -100,7 +99,7 @@ const ProfilePage = () => {
                         <div className="profile-info-div">
                             <div className="profile-button-modal"><ModalProfilPic /></div>
                             <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
-                            <p className="profile-role">{idUser.role}</p>
+                            <p className="profile-role">{idUser.role === "joueur" ? Joueur : "entraineur" ? Entrainement : ""}</p>
                             <p className="profile-club">{idUser.actual_club}</p>
 
                         </div>
@@ -180,7 +179,76 @@ const ProfilePage = () => {
 
             </div>
 
-            : idUser.role === "agent" ? "" : ""
+            : idUser.role === "agent" ? 
+
+                        <div className="profile-container">
+
+                            <NavBar />
+
+                            <div className="profile-page-div">
+
+                                <div className="profile-div">
+
+                                    <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
+                                    <img className="profile-img" src={idUser.profil_pic}></img>
+                                    <div className="profile-info-div">
+                                        <div className="profile-button-modal"><ModalProfilPic /></div>
+                                        <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
+                                        <p className="profile-role">{idUser.role}</p>
+                                        <p className="profile-club">{idUser.actual_club}</p>
+
+                                    </div>
+                                    <div className="profile-count-relation-div">
+                                        <p className="relation-count">100 relations</p>
+
+                                    </div>
+                                </div>  
+
+                                <div className="profile-div">
+                                        <div className="profile-title-div">
+                                        <p className="profile-title">Présentation</p>
+                                    </div>
+                                    <div className="profile-fiche-sportive">
+                                        <p className="profile-field">Date de naissance: {idUser.birthday}</p>
+                                        <p className="profile-field">Lieu de naissance: {idUser.birthday_place}</p>
+                                        <p className="profile-field">Années d'expérience: 20 ans</p>
+                                        <p className="profile-field">Agent Fifa</p>
+                                        <p className="profile-field">Région de Lisbonne, PORTUGAL</p>
+                                    </div>
+                               </div>
+
+                                <div className="profile-div">
+                                    <div className="profile-title-div">
+                                        <p className="profile-title">Client</p>
+                                    </div>
+                                    <div className="profile-fiche-sportive">
+                                        <p className="profile-field">Christiano RONALDO</p>
+                                        <p className="profile-field">Lionel MESSI</p>
+                                        <p className="profile-field">Rida LAMRINI</p>
+                                    </div>
+                                </div>
+
+                                <div className="profile-div">
+                                    <div className="profile-title-div">
+                                        <p className="profile-title">Distinctions personnelles</p>
+                                        <div className="profile-button-modal">
+                                            <ModalDistinction />
+                                        </div>
+                                    </div>
+                                    <div className="profile-distinctions">
+                                        <div className="profile-div-distinctions-map">
+                                            <p id="profile-field-bold">{distinction.name}</p>
+                                            <p>{distinction.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+            
+            : ""
 
             } 
 
