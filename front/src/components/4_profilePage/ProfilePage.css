@@ -12,16 +12,15 @@
     margin: 0 auto;
 }
 
-/* First DIV */
-
-.profile-img-div{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    right : 50%;
+.profile-button-modal {
+    align-self: flex-end;
 }
 
+/* First DIV */
+
+
 .profile-img {
+    position: absolute;
     width: 130px;
     height: 130px;
     border-radius: 50%;
