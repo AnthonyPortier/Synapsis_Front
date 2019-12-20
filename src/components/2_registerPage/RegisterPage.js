@@ -17,7 +17,6 @@ const RegisterPage = () => {
     password: '',
     role: ''   
   })
-  
 
   let history = useHistory()
 
@@ -28,6 +27,9 @@ const RegisterPage = () => {
       history.push('/Login')
     })
   }
+
+  console.log(info.role)
+
 
 
   return (
@@ -66,10 +68,10 @@ const RegisterPage = () => {
               <FormGroup>
                 <Label for="role">Profession</Label>
                 <Input required type="select" name="role" value={info.role} id="role" 
-                onChange={(e) => setInfo({...info, role: e.target.value=='Joueur'?'Joueur':e.target.value=='Entraineur'?'Entraineur':'Agent'})}>
-                  <option>Joueur</option>
-                  <option>Entraineur</option>
-                  <option>Agent</option>
+                onChange={(e) => setInfo({...info, role: e.target.value})}>
+                  <option value='Joueur'>Joueur</option>
+                  <option value='Entraineur'>Entraineur</option>
+                  <option value='Agent'>Agent</option>
                 </Input>
               </FormGroup>
             </Col>

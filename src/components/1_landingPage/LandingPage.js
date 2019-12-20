@@ -44,7 +44,7 @@ return (
         </form>
         <div className="register-already-subscribe">
             <button className="LandingPage-buttonfb">Continuer avec Facebook</button>
-            <p className="text-inscription">Nouveau sur Synapse ? <Link to='/register'><span className='LandingPage-span'>S'inscrire</span></Link></p>
+            <p className="text-inscription">Nouveau sur Synapse ? <Link to='/'><span className='LandingPage-span'>S'inscrire</span></Link></p>
         </div>
     </div>
 )
