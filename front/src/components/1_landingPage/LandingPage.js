@@ -21,7 +21,7 @@ const LandingPage = () => {
 
     const loginUser = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/utilisateur/login', detailLogin)
+        axios.post('https://synaps3.herokuapp.com/utilisateur/login', detailLogin)
             .then(res => {
                 localStorage.setItem('userToken', res.data)
                 return res.data

@@ -21,7 +21,7 @@ const RegisterPage = () => {
 
   const registerUser = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:5000/utilisateur/register', info)
+    axios.post('https://synaps3.herokuapp.com/utilisateur/register', info)
     .then(res => {
       history.push('/Login')
     })
