@@ -130,7 +130,7 @@ const ProfilePage = () => {
     return (
         <>
 
-            {idUser.role === "joueur" || "entraineur" ?
+            {idUser.role === "Joueur" || "Entraineur" ?
 
                 <div className="profile-container">
 
@@ -245,7 +245,7 @@ const ProfilePage = () => {
 
                 </div>
 
-                : idUser.role === "agent" ?
+                : idUser.role === "Agent" ?
 
                     <div className="profile-container">
 
@@ -288,9 +288,23 @@ const ProfilePage = () => {
                                     <p className="profile-title">Client</p>
                                 </div>
                                 <div className="profile-fiche-sportive">
-                                    <p className="profile-field">Christiano RONALDO</p>
-                                    <p className="profile-field">Lionel MESSI</p>
-                                    <p className="profile-field">Rida LAMRINI</p>
+
+
+
+                                    {client.filter(client => client.UserId === idUser.id).map(x =>
+                                        <div>
+                                            <p>{x.firstname}</p>
+                                            <p>{x.lastname}</p>
+                                            <p>{x.club}</p>
+                                            <p>{x.profil_pic}</p>
+                                            <button onClick={() => fetchDeleteClient(x.id)} >delete</button>
+
+                                        </div>
+
+                                    )}
+
+
+                                   
                                 </div>
                             </div>
 
