@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import NavBar from '../6_navBar/NavBar'
 import './ProfilePage.css'
 import axios from 'axios'
-    import ModalProfilPic from '../3_profileModalsUpdate/ModalUpdateProfilPic'
+import ModalProfilPic from '../3_profileModalsUpdate/ModalUpdateProfilPic'
 import ModalParcours from '../3_profileModalsUpdate/ModalUpdateParcoursSportif'
 import ModalInfo from '../3_profileModalsUpdate/ModalUpdateInfo'
 import ModalPalmares from '../3_profileModalsUpdate/ModalUpdatePalmares'
@@ -13,20 +13,15 @@ import jwt_decode from 'jwt-decode'
 const ProfilePage = () => {
 
     const [id, setId] = useState('')
-    const [info, setInfo] = useState([])
+    // const [info, setInfo] = useState([])
 
-    useEffect(() => {
-        getProfil()
-    }, [])
-    useEffect(() => {
-        getInfo()
-    }, [id])
-    const getInfo = () => {
-        axios.get(`https://synaps3.herokuapp.com/users/${id}`)
-        .then(res => console.log(res))
-        .then(res => setInfo(res.data))
-        .catch(err => console.log(err))
-    }
+
+    // const getInfo = () => {
+    //     axios.get(`https://synaps3.herokuapp.com/users/${id}`)
+    //     .then(res => console.log(res))
+    //     .then(res => setInfo(res.data))
+    //     .catch(err => console.log(err))
+    // }
     const getProfil = () => {
         const token = localStorage.userToken
         const decoded = jwt_decode(token)
@@ -36,11 +31,8 @@ const ProfilePage = () => {
 
 
 
-
-console.log(id)
     //hooks pour get et update un user
     const [idUser, setIdUser] = useState([])
-
 
     //hooks pour get create et delete history
     const [history, sethistory] = useState([])
@@ -54,22 +46,25 @@ console.log(id)
     //hooks pour get et update une client
     const [client, setClient] = useState([])
 
-
+    useEffect(() => {
+        getProfil()
+    }, [])
     useEffect(() => {
         fetchDataUser()
         fetchDataHistory()
         fetchDataPalmares()
         fetchDataDistinction()
         fetchDataClient()
-    }, [])
-
-
+    }, [id, history])
+   
     //fetch de la data du user 
     const fetchDataUser = () => {
         axios.get(`http://synaps3.herokuapp.com/users/${id}`)
             .then(res => setIdUser(res.data))
             .catch((err) => console.log(err))
     }
+
+    
 
 
     //fetch de la data des history
