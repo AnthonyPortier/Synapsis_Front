@@ -14,7 +14,8 @@ const RegisterPage = () => {
     lastname: '',
     birthday: '',
     email: '',
-    password: ''    
+    password: '',
+    role: ''   
   })
 
   let history = useHistory()
@@ -56,6 +57,17 @@ const RegisterPage = () => {
               <FormGroup>
                 <Label for="birthday">Date de naissance</Label>
                 <Input required type="text" name="birthday" value={info.birthday} id="birthday" onChange={(e) => setInfo({...info, birthday: e.target.value})} />
+              </FormGroup>
+            </Col>
+
+            <Col md={11}>
+              <FormGroup>
+                <Label for="role">Profession</Label>
+                <Input required type="select" name="role" value={info.role} id="role" onChange={(e) => setInfo({...info, role: e.target.value})}>
+                  <option>Joueur</option>
+                  <option>Entraineur</option>
+                  <option>Agent</option>
+                </Input>
               </FormGroup>
             </Col>
 
