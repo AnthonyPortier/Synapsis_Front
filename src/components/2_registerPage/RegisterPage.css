@@ -1,3 +1,4 @@
+
 .container-logo{
     background-color:#4B905E;
     display: flex;
@@ -5,7 +6,6 @@
     align-items: center;
     justify-content: center;
     float: left;
-
 }
 .register-logo {
     width: auto;
@@ -20,7 +20,8 @@
     color: grey;
 }
 .register-h1 {
-    font-size: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
     margin: 20px auto;
     color: white;
 }
@@ -34,6 +35,7 @@
     background-color: #E1E1E1;
     margin: 10px 50px;
     border-radius: 1rem;
+    text-align: left;
 }
 
 .register-login {
@@ -46,8 +48,7 @@
 
 .p-register{
     margin-top: 0;
-    margin-bottom: 1rem;
-    text-align: center;
+    text-align: left;
     width: 80%;
 }
 .bottom-register{
@@ -61,16 +62,16 @@
     background-color:#3C579C;
     border-radius: 20px;
     color: white;
-    width: 90%;
+    width: 40%;
     margin: auto;
-    height: 4rem;
+    height: 3rem;
 }
 .button-signin {
-    width: 90%;
+    width: 40%;
     border-radius: 20px;
     background-color: #4B905E;
     color: white;
-    height: 4rem;
+    height: 3rem;
     margin: 10px;
 }
 .bottom-register a{
@@ -94,4 +95,9 @@
     justify-content: center;
     margin: 20px;
 
+}
+
+.register-input {
+    margin: 0px;
+    width: 100%!important;
 }
