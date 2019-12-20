@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios'
+import './modalUpdateProfilPic.css'
+import Plus from '../../img/plus.png'
 
 const ModalProfilPic = (props) => {
     const {
@@ -36,9 +38,25 @@ const ModalProfilPic = (props) => {
 
     }
 
+    const [image, setImage] = useState(null)
+    const onChangeHandler = (e) => {
+        setImage(e.target.files)
+        console.log(e.target.files[0])
+    }
+
+    const onClickHandler = (e) => {
+        e.preventDefault()
+        const data = new FormData()
+        data.append('file', image[0])
+        axios.put("https://synaps3.herokuapp.com/users/imgupload/1", data)
+            .then(res => {
+                console.log(res.statusText)
+            })
+    }
+
     return (
         <div>
-            <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+            <Button   onClick={toggle}><img className="plus" src={Plus} alt="plus"/></Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Profil General</ModalHeader>
                 <ModalBody>
@@ -51,9 +69,11 @@ const ModalProfilPic = (props) => {
                     <p>Club actuel :</p>
                     <input id="actual_club" name="actual_club" value={idUser.actual_club} type="text"
                         onChange={(e) => { setIdUser({ ...idUser.actual_club, actual_club: e.target.value }) }} />
-                    <p>Photo de profil :</p>
-                    <input id="profil_pic" name="profil_pic" value={idUser.profil_pic} type="text"
-                        onChange={(e) => { setIdUser({ ...idUser.profil_pic, profil_pic: e.target.value }) }} />
+                    <form method="POST" encType="multipart/form-data" action="uploaddufichier" >
+                        <p>Photo de profil :</p>
+                        <input type="file" name="file" onChange={(e) => onChangeHandler(e)} />
+                        <button className="image-btn" type="submit" onClick={(e) => onClickHandler(e)} > envoyer </button>
+                    </form>
                     <p>Profession :</p>
                     <input id="role" name="role" value={idUser.role} type="text"
                         onChange={(e) => { setIdUser({ ...idUser.ro, role: e.target.value }) }} />

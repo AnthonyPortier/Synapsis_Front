@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios'
+import './modalUpdateInfo.css'
 
 const ModalInfo = (props) => {
     const {
@@ -31,7 +32,7 @@ const ModalInfo = (props) => {
 
     return (
         <div>
-            <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+            <Button  onClick={toggle}>{buttonLabel}</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Informations personnelles</ModalHeader>
                 <ModalBody>
