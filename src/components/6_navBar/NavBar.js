@@ -11,9 +11,11 @@ import {
     Input
 } from 'reactstrap';
 import './Navbar.css'
+import {useHistory, Link} from 'react-router-dom'
 import logo from '../../img/logo.png'
 
 const NavBar = (props)=>{
+  let history = useHistory()
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
