@@ -8,14 +8,14 @@ import ModalParcours from '../3_profileModalsUpdate/ModalUpdateParcoursSportif'
 import ModalInfo from '../3_profileModalsUpdate/ModalUpdateInfo'
 import ModalPalmares from '../3_profileModalsUpdate/ModalUpdatePalmares'
 import ModalDistinction from '../3_profileModalsUpdate/ModalUpdateDistinctionsPersonnelles'
+import jwt_decode from 'jwt-decode'
+
 
 const ProfilePage = () => {
 
-
-    // Florian work for dynamique profil route / work with if !
-
     const [id, setId] = useState('')
-    const [info, setInfo] = useState({})
+    const [info, setInfo] = useState([])
+
     useEffect(() => {
         getProfil()
     }, [])
@@ -24,9 +24,9 @@ const ProfilePage = () => {
     }, [id])
     const getInfo = () => {
         axios.get(`https://synaps3.herokuapp.com/users/${id}`)
-            .then(res => console.log(res))
-            .then(res => setInfo(res.data))
-            .catch(err => console.log(err))
+        .then(res => console.log(res))
+        .then(res => setInfo(res.data))
+        .catch(err => console.log(err))
     }
     const getProfil = () => {
         const token = localStorage.userToken
@@ -36,6 +36,9 @@ const ProfilePage = () => {
 
 
 
+
+
+console.log(id)
     //hooks pour get et update un user
     const [idUser, setIdUser] = useState([])
 
@@ -114,13 +117,13 @@ const ProfilePage = () => {
 
                         <div className="profile-div">
 
-                            <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
-                            <img className="profile-img" src={idUser.profil_pic}></img>
-                            <div className="profile-info-div">
-                                <div className="profile-button-modal"><ModalProfilPic /></div>
-                                <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
-                                <p className="profile-role">{idUser.role === "joueur" ? "Joueur" : "entraineur" ? "Entrainement" : ""}</p>
-                                <p className="profile-club">{idUser.actual_club}</p>
+                        <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
+                        <img className="profile-img" src={idUser.profil_pic}></img>
+                        <div className="profile-info-div">
+                            <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
+                            <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
+                            <p className="profile-role">{idUser.role === "joueur" ? "Joueur" : "entraineur" ? "Entrainement" : ""}</p>
+                            <p className="profile-club">{idUser.actual_club}</p>
 
                             </div>
                             <div className="profile-count-relation-div">
@@ -209,13 +212,13 @@ const ProfilePage = () => {
 
                             <div className="profile-div">
 
-                                <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
-                                <img className="profile-img" src={idUser.profil_pic}></img>
-                                <div className="profile-info-div">
-                                    <div className="profile-button-modal"><ModalProfilPic /></div>
-                                    <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
-                                    <p className="profile-role">{idUser.role}</p>
-                                    <p className="profile-club">{idUser.actual_club}</p>
+                                    <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
+                                    <img className="profile-img" src={idUser.profil_pic}></img>
+                                    <div className="profile-info-div">
+                                        <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
+                                        <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
+                                        <p className="profile-role">{idUser.role}</p>
+                                        <p className="profile-club">{idUser.actual_club}</p>
 
                                 </div>
                                 <div className="profile-count-relation-div">

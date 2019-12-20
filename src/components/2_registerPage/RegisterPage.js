@@ -28,6 +28,10 @@ const RegisterPage = () => {
       })
   }
 
+  console.log(info.role)
+
+
+
   return (
     <div className="container-register">
       <div className="container-logo">
@@ -63,14 +67,14 @@ const RegisterPage = () => {
             <Col md={11}>
               <FormGroup>
                 <Label for="role">Profession</Label>
-                <Input required type="select" name="role" value={info.role} id="role" onChange={(e) => setInfo({ ...info, role: e.target.value })}>
-                  <option>Joueur</option>
-                  <option>Entraineur</option>
-                  <option>Agent</option>
+                <Input required type="select" name="role" value={info.role} id="role" 
+                onChange={(e) => setInfo({...info, role: e.target.value})}>
+                  <option value='Joueur'>Joueur</option>
+                  <option value='Entraineur'>Entraineur</option>
+                  <option value='Agent'>Agent</option>
                 </Input>
               </FormGroup>
             </Col>
-
             <Col md={11}>
               <FormGroup>
                 <Label for="email">Adresse e-mail</Label>

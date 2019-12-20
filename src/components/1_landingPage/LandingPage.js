@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logoVert from '../../img/logoVert.png'
@@ -11,13 +10,11 @@ const LandingPage = () => {
     let history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    //const [afficherMdp, setAfficherMdp] = useState('password')    
-    
+    //const [afficherMdp, setAfficherMdp] = useState('password')
     const detailLogin = {
     email: email,
         password: password
-}    
-
+}
 const loginUser = (e) => {
     e.preventDefault()
     axios.post('https://synaps3.herokuapp.com/utilisateur/login', detailLogin)
@@ -30,7 +27,6 @@ const loginUser = (e) => {
         })
         .catch(err => console.log(err))
 }
-
 return (
     <div className='LandingPage-full'>
         <img className='logoVert' src={logoVert} alt='logo Synapse' />
@@ -48,10 +44,9 @@ return (
         </form>
         <div className="register-already-subscribe">
             <button className="LandingPage-buttonfb">Continuer avec Facebook</button>
-            <p className="text-inscription">Nouveau sur Synapse ? <Link to='/register'><span className='LandingPage-span'>S'inscrire</span></Link></p>
+            <p className="text-inscription">Nouveau sur Synapse ? <Link to='/'><span className='LandingPage-span'>S'inscrire</span></Link></p>
         </div>
     </div>
 )
 }
-
 export default LandingPage;
