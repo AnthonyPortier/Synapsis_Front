@@ -23,10 +23,9 @@ const ModalInfo = (props) => {
 
     const updateDataUser = (e) => {
         e.preventDefault()
-        axios.put(`http://localhost:8080/users/1`, idUser)
+        axios.put(`https://synaps3.herokuapp.com/users/1`, idUser)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
-        window.location.reload(false);
 
     }
 

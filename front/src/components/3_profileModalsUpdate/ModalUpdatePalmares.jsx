@@ -19,7 +19,7 @@ const ModalPalmares = (props) => {
 
     const createDataPalmares = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8080/palmares', createPalmares)
+        axios.post('https://synaps3.herokuapp.com/palmares', createPalmares)
             .catch((err) => console.log(err))
     }
 

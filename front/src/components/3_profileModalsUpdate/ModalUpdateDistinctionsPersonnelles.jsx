@@ -19,7 +19,7 @@ const ModalDistinction = (props) => {
 
   const createDataDistinction = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8080/distinction', createDistinction)
+    axios.post('https://synaps3.herokuapp.com/distinction', createDistinction)
       .catch((err) => console.log(err))
   }
 
@@ -33,7 +33,7 @@ const ModalDistinction = (props) => {
           <input id="name" name="name" value={createDistinction.name} required type="text"
             onChange={(e) => { setcreateDistinction({ ...createDistinction, name: e.target.value }) }} />
           <p>Saison :</p>
-          <input id="date" name="date" value={createDistinction.description} required type="text"
+          <input id="date" name="date" value={createDistinction.date} required type="text"
             onChange={(e) => { setcreateDistinction({ ...createDistinction, date: e.target.value }) }} />
         </ModalBody>
         <ModalFooter >

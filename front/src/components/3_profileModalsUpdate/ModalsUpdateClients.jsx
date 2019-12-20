@@ -21,7 +21,7 @@ const ModalClient = (props) => {
 
     const createDataClient = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8080/clients', createClient)
+        axios.post('https://synaps3.herokuapp.com/clients', createClient)
             .catch((err) => console.log(err))
 
     }

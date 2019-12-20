@@ -21,7 +21,7 @@ const ModalParcours = (props) => {
 
     const createDataHistory = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8080/history', createHistory)
+        axios.post('https://synaps3.herokuapp.com/history', createHistory)
             .catch((err) => console.log(err))
     }
 
