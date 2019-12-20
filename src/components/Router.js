@@ -13,7 +13,7 @@ const Router = () => {
             <Switch>
                 <Route exact path='/' component={RegisterPage} />
                 <Route exact path='/login' component={LandingPage} />     
-                <Route exact path='/profile/:id' component={ProfilePage} />
+                <Route exact path='/profile' component={ProfilePage} />
                 {/* Route pour tester les routes */}
                 <Route exact path='/routes/:id' component={Routes} />
             </Switch>

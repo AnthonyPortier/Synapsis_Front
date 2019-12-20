@@ -15,7 +15,7 @@ const RegisterPage = () => {
     birthday: '',
     email: '',
     password: '',
-    role: ''   
+    role: ''
   })
 
   let history = useHistory()
@@ -23,9 +23,9 @@ const RegisterPage = () => {
   const registerUser = (e) => {
     e.preventDefault()
     axios.post('https://synaps3.herokuapp.com/utilisateur/register', info)
-    .then(res => {
-      history.push('/Login')
-    })
+      .then(res => {
+        history.push('/Login')
+      })
   }
 
   return (
@@ -42,28 +42,28 @@ const RegisterPage = () => {
             <Col md={11}>
               <FormGroup>
                 <Label className="firstname" for="firstname">Prénom</Label>
-                <Input required type="text" name="firstname" value={info.firstname} id="firstname" onChange={(e) => setInfo({...info, firstname: e.target.value})} />
+                <Input required type="text" name="firstname" value={info.firstname} id="firstname" onChange={(e) => setInfo({ ...info, firstname: e.target.value })} />
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
                 <Label for="lastname">Nom</Label>
-                <Input required type="text" name="lastname" value={info.lastname} id="lastname" onChange={(e) => setInfo({...info, lastname: e.target.value})} />
+                <Input required type="text" name="lastname" value={info.lastname} id="lastname" onChange={(e) => setInfo({ ...info, lastname: e.target.value })} />
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
                 <Label for="birthday">Date de naissance</Label>
-                <Input required type="text" name="birthday" value={info.birthday} id="birthday" onChange={(e) => setInfo({...info, birthday: e.target.value})} />
+                <Input required type="text" name="birthday" value={info.birthday} id="birthday" onChange={(e) => setInfo({ ...info, birthday: e.target.value })} />
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
                 <Label for="role">Profession</Label>
-                <Input required type="select" name="role" value={info.role} id="role" onChange={(e) => setInfo({...info, role: e.target.value})}>
+                <Input required type="select" name="role" value={info.role} id="role" onChange={(e) => setInfo({ ...info, role: e.target.value })}>
                   <option>Joueur</option>
                   <option>Entraineur</option>
                   <option>Agent</option>
@@ -74,14 +74,14 @@ const RegisterPage = () => {
             <Col md={11}>
               <FormGroup>
                 <Label for="email">Adresse e-mail</Label>
-                <Input required type="text" name="email" value={info.email} id="email" onChange={(e) => setInfo({...info, email: e.target.value})} />
+                <Input required type="text" name="email" value={info.email} id="email" onChange={(e) => setInfo({ ...info, email: e.target.value })} />
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
                 <Label for="password">Mot de passe (6 charactères minimun)</Label>
-                <Input required type="password" name="password" value={info.password} id="password" onChange={(e) => setInfo({...info, password: e.target.value})} />
+                <Input required type="password" name="password" value={info.password} id="password" onChange={(e) => setInfo({ ...info, password: e.target.value })} />
               </FormGroup>
             </Col>
 
