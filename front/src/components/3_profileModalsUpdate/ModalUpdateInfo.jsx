@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios'
 import './modalUpdateInfo.css'
+import Plus from '../../img/plus.png'
+
 
 const ModalInfo = (props) => {
     const {
@@ -14,12 +16,12 @@ const ModalInfo = (props) => {
     const toggle = () => setModal(!modal);
 
     const [idUser, setIdUser] = useState({
-        categorie:'',
-        birthday:'',
-        birthday_place:'',
-        size:'',
-        weight:'',
-        foot:''
+        categorie: '',
+        birthday: '',
+        birthday_place: '',
+        size: '',
+        weight: '',
+        foot: ''
     })
 
     const updateDataUser = (e) => {
@@ -32,7 +34,7 @@ const ModalInfo = (props) => {
 
     return (
         <div>
-            <Button  onClick={toggle}>{buttonLabel}</Button>
+            <Button onClick={toggle}><img className="plus" src={Plus} alt="plus" /></Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Informations personnelles</ModalHeader>
                 <ModalBody>
@@ -40,7 +42,7 @@ const ModalInfo = (props) => {
                     <input id="categorie" name="categorie" value={idUser.categorie} type="text"
                         onChange={(e) => { setIdUser({ ...idUser, categorie: e.target.value }) }} />
                     <p>Date de naissance </p>
-                    <input id="birthday" name="birthday" value={idUser.birthday} type="text"
+                    <input id="birthday" name="birthday" value={idUser.birthday} type="date"
                         onChange={(e) => { setIdUser({ ...idUser, birthday: e.target.value }) }} />
                     <p>Lieu de naissance</p>
                     <input id="birthday_place" name="birthday_place" value={idUser.birthday_place} type="text"
@@ -57,8 +59,8 @@ const ModalInfo = (props) => {
                 </ModalBody>
                 <ModalFooter >
                     <form onSubmit={updateDataUser}>
-                        <Button type="submit" color="primary" onClick={toggle}>Enregistrer</Button>{' '}
-                        <Button color="secondary" onClick={toggle}>Fermer</Button>
+                        <Button className="image-btn" type="submit" onClick={toggle}>Enregistrer</Button>{' '}
+                        <Button className="image-btn" onClick={toggle}>Fermer</Button>
                     </form>
                 </ModalFooter>
             </Modal>

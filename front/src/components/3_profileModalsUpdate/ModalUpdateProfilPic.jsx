@@ -56,7 +56,7 @@ const ModalProfilPic = (props) => {
 
     return (
         <div>
-            <Button   onClick={toggle}><img className="plus" src={Plus} alt="plus"/></Button>
+            <Button onClick={toggle}><img className="plus" src={Plus} alt="plus" /></Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Profil General</ModalHeader>
                 <ModalBody>
@@ -69,20 +69,23 @@ const ModalProfilPic = (props) => {
                     <p>Club actuel :</p>
                     <input id="actual_club" name="actual_club" value={idUser.actual_club} type="text"
                         onChange={(e) => { setIdUser({ ...idUser.actual_club, actual_club: e.target.value }) }} />
-                    <form method="POST" encType="multipart/form-data" action="uploaddufichier" >
-                        <p>Photo de profil :</p>
-                        <input type="file" name="file" onChange={(e) => onChangeHandler(e)} />
-                        <button className="image-btn" type="submit" onClick={(e) => onClickHandler(e)} > envoyer </button>
-                    </form>
                     <p>Profession :</p>
                     <input id="role" name="role" value={idUser.role} type="text"
                         onChange={(e) => { setIdUser({ ...idUser.ro, role: e.target.value }) }} />
+                    <form method="POST" encType="multipart/form-data" action="uploaddufichier" >
+                        <p>Photo de profil :</p>
+                        <input type="file" name="file" onChange={(e) => onChangeHandler(e)} />
+                        <button className="image-btn" type="submit" onClick={(e) => onClickHandler(e)} > Envoyer </button>
+                    </form>
+
                 </ModalBody>
                 <ModalFooter >
+                    <div className="submit">
                     <form onSubmit={updateDataUser}>
-                        <Button type="submit" color="primary" onClick={toggle}>Enregistrer</Button>{' '}
-                        <Button color="secondary" onClick={toggle}>Fermer</Button>
+                        <Button type="submit" className="image-btn" onClick={toggle}>Enregistrer</Button>{' '}
+                        <Button className="image-btn" onClick={toggle}>Fermer</Button>
                     </form>
+                    </div>
                 </ModalFooter>
             </Modal>
         </div>

@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios'
+import './modalUpdatePalmares.css'
+import Plus from '../../img/plus.png'
+
+
+
+
 
 const ModalPalmares = (props) => {
     const {
@@ -26,7 +32,7 @@ const ModalPalmares = (props) => {
 
     return (
         <div>
-            <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+            <Button onClick={toggle}><img className="plus" src={Plus} alt="plus" /></Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Palmares</ModalHeader>
                 <ModalBody>
@@ -39,8 +45,8 @@ const ModalPalmares = (props) => {
                 </ModalBody>
                 <ModalFooter >
                     <form onSubmit={createDataPalmares}>
-                        <Button type="submit" color="primary" onClick={toggle}>Enregistrer</Button>{' '}
-                        <Button color="secondary" onClick={toggle}>Fermer</Button>
+                        <Button className="image-btn" type="submit" onClick={toggle}>Enregistrer</Button>{' '}
+                        <Button className="image-btn" onClick={toggle}>Fermer</Button>
                     </form>
                 </ModalFooter>
             </Modal>
