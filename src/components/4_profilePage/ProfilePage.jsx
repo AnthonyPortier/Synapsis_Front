@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import NavBar from '../6_navBar/NavBar'
 import './ProfilePage.css'
 import axios from 'axios'
+import profile from '../../img/profile.jpg'
+import stade from '../../img/3.jpg'
 import ModalProfilPic from '../3_profileModalsUpdate/ModalUpdateProfilPic'
 import ModalParcours from '../3_profileModalsUpdate/ModalUpdateParcoursSportif'
 import ModalInfo from '../3_profileModalsUpdate/ModalUpdateInfo'
 import ModalPalmares from '../3_profileModalsUpdate/ModalUpdatePalmares'
 import ModalDistinction from '../3_profileModalsUpdate/ModalUpdateDistinctionsPersonnelles'
 import jwt_decode from 'jwt-decode'
+import Croix from '../../img/croix.png'
 
 
 const ProfilePage = () => {
@@ -18,13 +21,7 @@ const ProfilePage = () => {
     useEffect(() => {
         getProfil()
     }, [])
-    useEffect(() => {
-        fetchDataUser()
-        fetchDataHistory()
-        fetchDataPalmares()
-        fetchDataDistinction()
-        fetchDataClient()
-    }, [id])
+
     // const getInfo = () => {
     //     axios.get(`https://synaps3.herokuapp.com/users/${id}`)
     //     .then(res => console.log(res))
@@ -55,6 +52,13 @@ const ProfilePage = () => {
     //hooks pour get et update une client
     const [client, setClient] = useState([])
 
+    useEffect(() => {
+        fetchDataUser()
+        fetchDataHistory()
+        fetchDataPalmares()
+        fetchDataDistinction()
+        fetchDataClient()
+    }, [id, history, palmares, distinction,])
 
     //fetch de la data du user 
     const fetchDataUser = () => {
@@ -63,7 +67,7 @@ const ProfilePage = () => {
             .catch((err) => console.log(err))
     }
 
-    
+
 
 
     //fetch de la data des history
@@ -102,10 +106,10 @@ const ProfilePage = () => {
             .catch((err) => console.log(err))
     }
     //delete de distinction
-     const fetchDeleteDistinction = (id) => {
-         axios.delete(`http://synaps3.herokuapp.com/distinction/${id}`)
-        .catch((err) => console.log(err))
-     }
+    const fetchDeleteDistinction = (id) => {
+        axios.delete(`http://synaps3.herokuapp.com/distinction/${id}`)
+            .catch((err) => console.log(err))
+    }
 
 
     //fetch de la data des clients
@@ -114,13 +118,13 @@ const ProfilePage = () => {
             .then(res => setClient(res.data))
             .catch((err) => console.log(err))
     }
-     //delete de clients
-     const fetchDeleteClient = (id) => {
-         axios.delete(`http://synaps3.herokuapp.com/clients/${id}`)
-        .catch((err) => console.log(err))
+    //delete de clients
+    const fetchDeleteClient = (id) => {
+        axios.delete(`http://synaps3.herokuapp.com/clients/${id}`)
+            .catch((err) => console.log(err))
 
 
-     }
+    }
 
 
     return (
@@ -136,13 +140,13 @@ const ProfilePage = () => {
 
                         <div className="profile-div">
 
-                        <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
-                        <img className="profile-img" src={idUser.profil_pic}></img>
-                        <div className="profile-info-div">
-                            <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
-                            <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
-                            <p className="profile-role">{idUser.role === "joueur" ? "Joueur" : "entraineur" ? "Entrainement" : ""}</p>
-                            <p className="profile-club">{idUser.actual_club}</p>
+                            <div className="baneer-profile"><img id="baneer-img" src={stade} alt='bannière image' /></div>
+                            <img className="profile-img" src={idUser.profil_pic}></img>
+                            <div className="profile-info-div">
+                                <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
+                                <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
+                                <p className="profile-role">{idUser.role === "joueur" ? "Joueur" : "entraineur" ? "Entraineur           " : ""}</p>
+                                <p className="profile-club">{idUser.actual_club}</p>
 
                             </div>
                             <div className="profile-count-relation-div">
@@ -176,13 +180,16 @@ const ProfilePage = () => {
                                 </div>
                             </div>
                             <div className="profile-parcours-sportif">
-                            
+
                                 <div className="profile-div-club-map">
                                     {history.filter(history => history.UserId === idUser.id).map(history =>
                                         <div>
-                                            <button onClick={() => fetchDeleteHistory(history.id)} >delete</button>
                                             <p>{history.name}</p>
                                             <p>{history.description}</p>
+                                            <p>{history.poste}</p>
+                                            <p>{history.date}</p>
+                                            <button onClick={() => fetchDeleteHistory(history.id)} ><img src={Croix} alt="croix" width="20px"/></button>
+
                                         </div>
                                     )}
                                 </div>
@@ -203,7 +210,7 @@ const ProfilePage = () => {
                                         <div>
                                             <p>{x.name}</p>
                                             <p>{x.description}</p>
-                                            <button onClick={() => fetchDeletePalmares(x.id)} >delete</button>
+                                            <button onClick={() => fetchDeletePalmares(x.id)} ><img src={Croix} alt="croix" width="20px"/></button>
                                         </div>
                                     )}
 
@@ -224,7 +231,7 @@ const ProfilePage = () => {
                                         <div>
                                             <p>{x.name}</p>
                                             <p>{x.date}</p>
-                                            <button onClick={() => fetchDeleteDistinction(x.id)} >delete</button>
+                                            <button onClick={() => fetchDeleteDistinction(x.id)} ><img src={Croix} alt="croix" width="20px"/></button>
 
                                         </div>
 
@@ -248,13 +255,13 @@ const ProfilePage = () => {
 
                             <div className="profile-div">
 
-                                    <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
-                                    <img className="profile-img" src={idUser.profil_pic}></img>
-                                    <div className="profile-info-div">
-                                        <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
-                                        <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
-                                        <p className="profile-role">{idUser.role}</p>
-                                        <p className="profile-club">{idUser.actual_club}</p>
+                                <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
+                                <img className="profile-img" src={idUser.profil_pic}></img>
+                                <div className="profile-info-div">
+                                    <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
+                                    <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
+                                    <p className="profile-role">{idUser.role}</p>
+                                    <p className="profile-club">{idUser.actual_club}</p>
 
                                 </div>
                                 <div className="profile-count-relation-div">
@@ -291,7 +298,7 @@ const ProfilePage = () => {
                                 <div className="profile-title-div">
                                     <p className="profile-title">Distinctions personnelles</p>
                                     <div className="profile-button-modal">
-                                        <ModalDistinction id={id}/>
+                                        <ModalDistinction id={id} />
                                     </div>
                                 </div>
                                 <div className="profile-distinctions">
