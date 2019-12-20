@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LandingPage from './1_landingPage/LandingPage';
 import RegisterPage from './2_registerPage/RegisterPage';
 import ProfilePage from './4_profilePage/ProfilePage';
@@ -9,6 +9,7 @@ import Routes from './test/Routes'
 const Router = () => {
     return (
         <div>
+            <Router>
             <Switch>
                 <Route exact path='/' component={RegisterPage} />
                 <Route exact path='/login' component={LandingPage} />
@@ -16,6 +17,7 @@ const Router = () => {
                 <Route exact path='/routes/:id' component={Routes} />
                 
             </Switch>
+            </Router>
         </div>
     )
 }
