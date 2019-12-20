@@ -8,7 +8,7 @@ import Routes from './test/Routes'
 
 
 const Router = () => {
-    return (A
+    return (
         <div>
             <Switch>
                 <Route exact path='/' component={RegisterPage} />

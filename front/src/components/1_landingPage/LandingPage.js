@@ -27,7 +27,7 @@ const LandingPage = ()=>{
             type={afficherMdp}
             // onChange={}
             />
-            <Link  to='/profilePage'><button className='LandingPage-button'>s'inscrire</button></Link>
+            <Link  to='/'><button className='LandingPage-button'>s'inscrire</button></Link>
             <div className="register-already-subscribe">
                 <button className="LandingPage-buttonfb">Continuer avec Facebook</button>
                 <p className="text-inscription">Nouveau sur Synapse ? <Link to ='/register'><span className='LandingPage-span'>S'identifer</span></Link></p>
