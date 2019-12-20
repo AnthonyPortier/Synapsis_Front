@@ -17,6 +17,7 @@ const RegisterPage = () => {
     password: '',
     role: ''   
   })
+  
 
   let history = useHistory()
 
@@ -27,6 +28,7 @@ const RegisterPage = () => {
       history.push('/Login')
     })
   }
+
 
   return (
     <div className="container-register">
@@ -63,14 +65,14 @@ const RegisterPage = () => {
             <Col md={11}>
               <FormGroup>
                 <Label for="role">Profession</Label>
-                <Input required type="select" name="role" value={info.role} id="role" onChange={(e) => setInfo({...info, role: e.target.value})}>
+                <Input required type="select" name="role" value={info.role} id="role" 
+                onChange={(e) => setInfo({...info, role: e.target.value=='Joueur'?'Joueur':e.target.value=='Entraineur'?'Entraineur':'Agent'})}>
                   <option>Joueur</option>
                   <option>Entraineur</option>
                   <option>Agent</option>
                 </Input>
               </FormGroup>
             </Col>
-
             <Col md={11}>
               <FormGroup>
                 <Label for="email">Adresse e-mail</Label>

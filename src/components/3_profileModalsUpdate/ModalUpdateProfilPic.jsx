@@ -32,7 +32,7 @@ const ModalProfilPic = (props) => {
 
     const updateDataUser = (e) => {
         e.preventDefault()
-        axios.put(`https://synaps3.herokuapp.com/users/1`, idUser)
+        axios.put(`https://synaps3.herokuapp.com/users/${props.id}`, idUser)
             .then(res => console.log(res.data))
             .catch((err) => console.log(err))
 
@@ -48,7 +48,7 @@ const ModalProfilPic = (props) => {
         e.preventDefault()
         const data = new FormData()
         data.append('file', image[0])
-        axios.put("https://synaps3.herokuapp.com/users/imgupload/1", data)
+        axios.put(`https://synaps3.herokuapp.com/users/imgupload/${props.id}`, data)
             .then(res => {
                 console.log(res.statusText)
             })

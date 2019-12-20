@@ -7,34 +7,37 @@ import ModalParcours from '../3_profileModalsUpdate/ModalUpdateParcoursSportif'
 import ModalInfo from '../3_profileModalsUpdate/ModalUpdateInfo'
 import ModalPalmares from '../3_profileModalsUpdate/ModalUpdatePalmares'
 import ModalDistinction from '../3_profileModalsUpdate/ModalUpdateDistinctionsPersonnelles'
+import jwt_decode from 'jwt-decode'
+
 
 const ProfilePage = () => {
 
+    const [id, setId] = useState('')
+    const [info, setInfo] = useState([])
 
-    // Florian work for dynamique profil route / work with if !
-    
-    // const [id, setId] = useState('')
-    // const [info, setInfo] = useState({})
-    // useEffect(() => {
-    //     getProfil()
-    // }, [])
-    // useEffect(() => {
-    //     getInfo()
-    // }, [id])
-    // const getInfo = () => {
-    //     Axios.get(`https://synaps3.herokuapp.com/users/${id}`)
-    //     .then(res => console.log(res))
-    //     .then(res => setInfo(res.data))
-    //     .catch(err => console.log(err))
-    // }
-    // const getProfil = () => {
-    //     const token = localStorage.userToken
-    //     const decoded = jwt_decode(token)
-    //     setId(decoded.id)
-    // }
+    useEffect(() => {
+        getProfil()
+    }, [])
+    useEffect(() => {
+        getInfo()
+    }, [id])
+    const getInfo = () => {
+        axios.get(`https://synaps3.herokuapp.com/users/${id}`)
+        .then(res => console.log(res))
+        .then(res => setInfo(res.data))
+        .catch(err => console.log(err))
+    }
+    const getProfil = () => {
+        const token = localStorage.userToken
+        const decoded = jwt_decode(token)
+        setId(decoded.id)
+    }
 
 
 
+
+
+console.log(id)
     //hooks pour get et update un user
     const [idUser, setIdUser] = useState([])
     
@@ -57,7 +60,7 @@ const ProfilePage = () => {
     }, [])
     //fetch de la data du user 
     const fetchDataUser = () => {
-        axios.get(`http://synaps3.herokuapp.com/users/1`)
+        axios.get(`http://synaps3.herokuapp.com/users/${id}`)
             .then(res => setIdUser(res.data))
             .catch((err) => console.log(err))
     }
@@ -121,7 +124,7 @@ const ProfilePage = () => {
                         <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
                         <img className="profile-img" src={idUser.profil_pic}></img>
                         <div className="profile-info-div">
-                            <div className="profile-button-modal"><ModalProfilPic /></div>
+                            <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
                             <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
                             <p className="profile-role">{idUser.role === "joueur" ? "Joueur" : "entraineur" ? "Entrainement" : ""}</p>
                             <p className="profile-club">{idUser.actual_club}</p>
@@ -216,7 +219,7 @@ const ProfilePage = () => {
                                     <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
                                     <img className="profile-img" src={idUser.profil_pic}></img>
                                     <div className="profile-info-div">
-                                        <div className="profile-button-modal"><ModalProfilPic /></div>
+                                        <div className="profile-button-modal"><ModalProfilPic id={id} /></div>
                                         <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
                                         <p className="profile-role">{idUser.role}</p>
                                         <p className="profile-club">{idUser.actual_club}</p>
