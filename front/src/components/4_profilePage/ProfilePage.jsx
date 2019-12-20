@@ -7,7 +7,7 @@ import ModalParcours from '../3_profileModalsUpdate/ModalUpdateParcoursSportif'
 import ModalInfo from '../3_profileModalsUpdate/ModalUpdateInfo'
 import ModalPalmares from '../3_profileModalsUpdate/ModalUpdatePalmares'
 import ModalDistinction from '../3_profileModalsUpdate/ModalUpdateDistinctionsPersonnelles'
-import ModalClient from '../3_profileModalsUpdate/ModalsUpdateClients'
+{/*import ModalClient from '../3_profileModalsUpdate/ModalsUpdateClients'*/}
 
 const ProfilePage = () => {
 
@@ -83,6 +83,10 @@ const ProfilePage = () => {
   
         return (
 
+            <>
+
+            {idUser.role === "joueur" || "entrainement" ?
+
             <div className="profile-container">
 
                 <NavBar />
@@ -92,12 +96,12 @@ const ProfilePage = () => {
                     <div className="profile-div">
 
                         <div className="baneer-profile"><img id="baneer-img" src="https://previews.123rf.com/images/matsiash/matsiash1008/matsiash100800021/7598053-vecteur-de-football-banni%C3%A8re-.jpg"></img></div>
-                        <img className="profile-img" src="https://image.shutterstock.com/image-vector/man-avatar-profile-picture-vector-260nw-229692004.jpg"></img>
+                        <img className="profile-img" src={idUser.profil_pic}></img>
                         <div className="profile-info-div">
                             <div className="profile-button-modal"><ModalProfilPic /></div>
-                            <p className="profile-name">Prénom NOM</p>
-                            <p className="profile-role">Joueur</p>
-                            <p className="profile-club">Club</p>
+                            <p className="profile-name">{idUser.firstname} {idUser.lastname}</p>
+                            <p className="profile-role">{idUser.role}</p>
+                            <p className="profile-club">{idUser.actual_club}</p>
 
                         </div>
                         <div className="profile-count-relation-div">
@@ -114,11 +118,12 @@ const ProfilePage = () => {
                             </div>
                         </div>
                         <div className="profile-fiche-sportive">
-                            <p className="profile-field">Catégorie: U17</p>
-                            <p className="profile-field">Date de naissance: 19/01/1998</p>
-                            <p className="profile-field">Lieu de naissance: Toulon (France)</p>
-                            <p className="profile-field">Taille: 175cm</p>
-                            <p className="profile-field">Poids: Droit</p>
+                            <p className="profile-field">Catégorie: {idUser.categorie}</p>
+                            <p className="profile-field">Date de naissance: {idUser.birthday}</p>
+                            <p className="profile-field">Lieu de naissance: {idUser.birthday_place}</p>
+                            <p className="profile-field">Taille: {idUser.size}</p>
+                            <p className="profile-field">Poids: {idUser.weight}</p>
+                            <p className="profile-field">Pied fort : {idUser.foot}</p>
                         </div>
                     </div>
 
@@ -131,10 +136,10 @@ const ProfilePage = () => {
                         </div>
                         <div className="profile-parcours-sportif">
                             <div className="profile-div-club-map">
-                                <p className="profile-field">Montpellier Herault Sport Club</p>
-                                <p className="profile-field">Milieu de terrain</p>
-                                <p className="profile-field" >U16 DH</p>
-                                <p className="profile-field">Saison 2012-2013</p>
+                                <p className="profile-field">{history.name}</p>
+                                <p className="profile-field">{history.poste}</p>
+                                <p className="profile-field" >{history.description}</p>
+                                <p className="profile-field">{history.date}</p>
                             </div>
                         </div>
 
@@ -149,8 +154,8 @@ const ProfilePage = () => {
                         </div>
                         <div className="profile-palmares">
                             <div className="profile-div-palmares-map">
-                                <p id="profile-field-bold">Saison 2014-2015 </p>
-                                <p>Vice-champion de France</p>
+                                <p id="profile-field-bold">{palmares.name}</p>
+                                <p>{palmares.description}</p>
                             </div>
                         </div>
                     </div>
@@ -164,8 +169,8 @@ const ProfilePage = () => {
                         </div>
                         <div className="profile-distinctions">
                             <div className="profile-div-distinctions-map">
-                                <p id="profile-field-bold">Saison 2012-2013 </p>
-                                <p>Sélection Ligue Languedoc-Roussillon</p>
+                                <p id="profile-field-bold">{distinction.name}</p>
+                                <p>{distinction.description}</p>
                             </div>
                         </div>
                     </div>
@@ -174,6 +179,12 @@ const ProfilePage = () => {
                 </div>
 
             </div>
+
+            : idUser.role === "agent" ? "" : ""
+
+            } 
+
+            </>
         )
 
 }
