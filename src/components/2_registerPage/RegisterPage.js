@@ -1,12 +1,32 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Link, useHistory } from 'react-router-dom';
+import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
+import axios from 'axios'
 import './RegisterPage.css'
 import logo from '../../img/logoVert.png'
 
 
+
 const RegisterPage = () => {
 
+  const [info, setInfo] = useState({
+    firstname: '',
+    lastname: '',
+    birthday: '',
+    email: '',
+    password: '',
+    role: ''   
+  })
+
+  let history = useHistory()
+
+  const registerUser = (e) => {
+    e.preventDefault()
+    axios.post('https://synaps3.herokuapp.com/utilisateur/register', info)
+    .then(res => {
+      history.push('/Login')
+    })
+  }
 
   return (
     <div className="container-register">
@@ -17,90 +37,68 @@ const RegisterPage = () => {
         <h1 className="register-h1">SYNAPSE</h1>
         <h2 className="register-h2">Boostez votre carrière footballistique</h2>
 
-        {/* <h3>Prénom</h3>
-            <input placeholder="Prénom"
-            id="Prénom"
-            name="Prénom"
-            // value={e.target.value}
-            type="text"
-            // onChange={}
-            /> */}
-
-        {/*  <h3>Nom</h3>
-            <input placeholder="Nom"
-            id="Nom"
-            name="Nom"
-            // value={e.target.value}
-            type="text"
-            // onChange={}
-            /> */}
-
-        {/* <h3>Date de naissance</h3>
-            <input placeholder="Date_de_naissance"
-            id="Date_de_naissance"
-            name="Date_de_naissance"
-            // value={e.target.value}
-            type="date"
-            // onChange={}
-            /> */}
-
-        {/*   <h3>email</h3>
-            <input placeholder="email"
-            id="email"
-            name="email"
-            // value={e.target.value}
-            type="email"
-            // onChange={}
-            /> */}
-
-
-        <Form className='form-register'>
+        <Form className='form-register' onSubmit={registerUser}>
           <Row form>
             <Col md={11}>
               <FormGroup>
-                <Label for="prenom">Prénom</Label>
-                <Input className='register-input' type="text" name="prenom" id="prenom" />
+                <Label className="firstname" for="firstname">Prénom</Label>
+                <Input required type="text" name="firstname" value={info.firstname} id="firstname" onChange={(e) => setInfo({...info, firstname: e.target.value})} />
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
-                <Label for="Nom">Nom</Label>
-                <Input className='register-input' type="text" name="nom" id="Nom" />
+                <Label for="lastname">Nom</Label>
+                <Input required type="text" name="lastname" value={info.lastname} id="lastname" onChange={(e) => setInfo({...info, lastname: e.target.value})} />
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
-                <Label for="exampleAddress">Date de naissance</Label>
-                <Input className='register-input' type="text" name="Date_de_naissance" id="Date_de_naissance" />
+                <Label for="birthday">Date de naissance</Label>
+                <Input required type="text" name="birthday" value={info.birthday} id="birthday" onChange={(e) => setInfo({...info, birthday: e.target.value})} />
+              </FormGroup>
+            </Col>
+
+            <Col md={11}>
+              <FormGroup>
+                <Label for="role">Profession</Label>
+                <Input required type="select" name="role" value={info.role} id="role" onChange={(e) => setInfo({...info, role: e.target.value})}>
+                  <option>Joueur</option>
+                  <option>Entraineur</option>
+                  <option>Agent</option>
+                </Input>
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
                 <Label for="email">Adresse e-mail</Label>
-                <Input className='register-input' type="text" name="email" id="email" />
+                <Input required type="text" name="email" value={info.email} id="email" onChange={(e) => setInfo({...info, email: e.target.value})} />
               </FormGroup>
             </Col>
 
             <Col md={11}>
               <FormGroup>
-                <Label for="Mot_de_passe">Mot de passe (6 charactères minimun)</Label>
-                <Input className='register-input' type="text" name="Mot_de_passe" id="Mot_de_passe" />
+                <Label for="password">Mot de passe (6 charactères minimun)</Label>
+                <Input required type="text" name="password" value={info.password} id="password" onChange={(e) => setInfo({...info, password: e.target.value})} />
               </FormGroup>
             </Col>
 
             <p className="p-register">Vous acceptez les conditions d'utilisation, la Politique de confidentialité et la Politique relative aux cookies de Synapse.</p>
+
             <div className="bottom-register">
-              <Link to='/login'><button className="button-signin">Accepter et s'inscrire</button></Link>
+              <button className="button-signin" type='submit'>Accepter et s'inscrire</button>
+              <div className="separation">OU</div>
+              <button className="button-fb">Continuer avec Facebook</button>
               <div className="register-footer">
-                Déjà inscrit(e) ?
-                <Link to='/login'> S'identifier</Link>
+                Déjà inscrit(e)?
+                <Link to='/login'>S'identifier</Link>
               </div>
             </div>
           </Row>
         </Form>
+
       </div>
     </div>
   )
