@@ -22,7 +22,6 @@ const ModalParcours = (props) => {
         description: '',
         UserId:''
     })
-    console.log(props.id +'du ')
     const createDataHistory = (e) => {
         e.preventDefault()
         axios.post('https://synaps3.herokuapp.com/history', createHistory)

@@ -53,11 +53,11 @@ const ProfilePage = () => {
     const [client, setClient] = useState([])
 
     useEffect(() => {
-        fetchDataUser()
+        fetchDataUser() 
         fetchDataHistory()
         fetchDataPalmares()
-        // fetchDataDistinction()
-        // fetchDataClient()
+        fetchDataDistinction()
+        fetchDataClient()
     }, [id, history, palmares, distinction,])
 
     //fetch de la data du user 
