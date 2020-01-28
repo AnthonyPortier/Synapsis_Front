@@ -18,9 +18,9 @@ const ProfilePage = () => {
     const [id, setId] = useState('')
     // const [info, setInfo] = useState([])
 
-    useEffect(() => {
-        getProfil()
-    }, [])
+    // useEffect(() => {
+    //     getProfil()
+    // }, [])
 
     // const getInfo = () => {
     //     axios.get(`https://synaps3.herokuapp.com/users/${id}`)
@@ -33,8 +33,6 @@ const ProfilePage = () => {
         const decoded = jwt_decode(token)
         setId(decoded.id)
     }
-
-
 
 
     //hooks pour get et update un user
@@ -53,12 +51,14 @@ const ProfilePage = () => {
     const [client, setClient] = useState([])
 
     useEffect(() => {
-        fetchDataUser() 
+        getProfil()
+        fetchDataUser()
         fetchDataHistory()
+        fetchDeleteHistory()
         fetchDataPalmares()
         fetchDataDistinction()
         fetchDataClient()
-    }, [id, history, palmares, distinction,])
+    }, [id])
 
     //fetch de la data du user 
     const fetchDataUser = () => {
