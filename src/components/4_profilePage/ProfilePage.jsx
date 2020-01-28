@@ -58,11 +58,11 @@ const ProfilePage = () => {
         fetchDataPalmares()
         fetchDataDistinction()
         fetchDataClient()
-    }, [id])
+    }, [id, idUser])
 
     //fetch de la data du user 
     const fetchDataUser = () => {
-        axios.get(`http://synaps3.herokuapp.com/users/${id}`)
+        axios.get(`https://synaps3.herokuapp.com/users/${id}`)
             .then(res => setIdUser(res.data))
             .catch((err) => console.log(err))
     }
@@ -72,13 +72,13 @@ const ProfilePage = () => {
 
     //fetch de la data des history
     const fetchDataHistory = () => {
-        axios.get(`http://synaps3.herokuapp.com/history`)
+        axios.get(`https://synaps3.herokuapp.com/history`)
             .then(res => sethistory(res.data))
             .catch((err) => console.log(err))
     }
     //delete de history
     const fetchDeleteHistory = (id) => {
-        axios.delete(`http://synaps3.herokuapp.com/history/${id}`)
+        axios.delete(`https://synaps3.herokuapp.com/history/${id}`)
             .catch((err) => console.log(err))
 
     }
@@ -87,13 +87,13 @@ const ProfilePage = () => {
 
     //fetch de la data des palmares
     const fetchDataPalmares = () => {
-        axios.get(`http://synaps3.herokuapp.com/palmares`)
+        axios.get(`https://synaps3.herokuapp.com/palmares`)
             .then(res => setpalmares(res.data))
             .catch((err) => console.log(err))
     }
     //delete de palmares
     const fetchDeletePalmares = (id) => {
-        axios.delete(`http://synaps3.herokuapp.com/palmares/${id}`)
+        axios.delete(`https://synaps3.herokuapp.com/palmares/${id}`)
             .catch((err) => console.log(err))
 
     }
@@ -101,26 +101,26 @@ const ProfilePage = () => {
 
     //fetch de la data des distinctions
     const fetchDataDistinction = () => {
-        axios.get(`http://synaps3.herokuapp.com/distinction`)
+        axios.get(`https://synaps3.herokuapp.com/distinction`)
             .then(res => setDistinction(res.data))
             .catch((err) => console.log(err))
     }
     //delete de distinction
     const fetchDeleteDistinction = (id) => {
-        axios.delete(`http://synaps3.herokuapp.com/distinction/${id}`)
+        axios.delete(`https://synaps3.herokuapp.com/distinction/${id}`)
             .catch((err) => console.log(err))
     }
 
 
     //fetch de la data des clients
     const fetchDataClient = () => {
-        axios.get(`http://synaps3.herokuapp.com/clients`)
+        axios.get(`https://synaps3.herokuapp.com/clients`)
             .then(res => setClient(res.data))
             .catch((err) => console.log(err))
     }
     //delete de clients
     const fetchDeleteClient = (id) => {
-        axios.delete(`http://synaps3.herokuapp.com/clients/${id}`)
+        axios.delete(`https://synaps3.herokuapp.com/clients/${id}`)
             .catch((err) => console.log(err))
 
 
